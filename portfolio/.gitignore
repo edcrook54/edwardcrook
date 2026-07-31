@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data / cache (raw data shouldn't live in git)
+.cache/
+data/raw/
+*.parquet
+*.csv.gz
+
+# Env
+.env
+
+# OS
+.DS_Store
