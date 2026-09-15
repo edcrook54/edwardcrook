@@ -1,9 +1,9 @@
 # Ed Crook
 
-I work in trading, and pricing and hedging FX/crypto flow day-to-day got
-me interested in what's happening underneath: market microstructure,
+I work in flow dealing, and pricing and hedging FX/crypto flow got
+me interested in market microstructure,
 order flow, and whether a signal actually survives real trading costs.
-This repo is where that interest turns into working code.
+This repo is my showcase of library knowledge, project architecture and data visualisation (along with the obvious - models and outcomes) for building out these projects.
 
 ## What's in here
 
