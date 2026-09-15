@@ -3,13 +3,12 @@
 ## What this is
 
 A portfolio project demonstrating cross-asset cointegration signal research
-on crypto tick data, built to showcase quant research + engineering ability
-for algo trading / market-making roles in digital assets (Wintermute-style
-employer). It will go on a public GitHub repo linked from the author's
-LinkedIn. This particular repo is being built on a tight timeline (roughly
-two days), in response to a live job posting. Prioritise a small number
-of things that actually work end-to-end over a large number of half-built
-things.
+on crypto tick data, built to showcase quant research and engineering
+ability for algo trading / market-making roles in digital assets. It lives
+on a public GitHub repo. This file sets the standards Claude Code should
+check this project against when reviewing, maintaining, or extending it:
+prioritise a small number of things that actually work end-to-end over a
+large number of half-built things.
 
 The author is technically strong in Python and has domain knowledge of
 market microstructure and spreads from their day job, but is newer to
@@ -81,23 +80,26 @@ plots. Config lives in `config/config.yaml`, loaded via
 hardcoding them in notebooks, so the config file stays the single source
 of truth.
 
-## Suggested build order given the timeline
+## Checking the pipeline
 
-1. `src/data/loader.py` + `src/data/bars.py` (including the common-window
-   trim): get one asset's dollar bars working end to end first.
-2. `src/data/alignment.py`: align all four assets onto the calendar grid.
-   Sanity-check with a plot before moving on.
-3. `src/signals/cointegration.py`: random-window Engle-Granger scan
-   across all pairs. This produces the first real result and plot.
-4. `src/signals/hedge_ratio.py`: Kalman hedge ratio for the
-   strongest pair(s) from step 3.
-5. `src/backtest/engine.py` + `src/backtest/costs.py`: signal +
+Each notebook corresponds to one stage below; check them in order when
+verifying end-to-end correctness:
+
+1. `src/data/loader.py` + `src/data/bars.py` — dollar bars for a single
+   asset, including the common-window trim.
+2. `src/data/alignment.py` — all four assets aligned onto the calendar
+   grid, sanity-checked with a plot.
+3. `src/signals/cointegration.py` — random-window Engle-Granger scan
+   across all pairs.
+4. `src/signals/hedge_ratio.py` — Kalman hedge ratio for the strongest
+   pair(s) from step 3.
+5. `src/backtest/engine.py` + `src/backtest/costs.py` — signal and
    cost-adjusted backtest on in-sample data.
-6. Walk-forward split + out-of-sample evaluation.
-7. Fill in notebook markdown + README with real numbers and plots, last.
+6. Walk-forward split and out-of-sample evaluation.
+7. Notebook markdown and README reflect the real numbers and plots
+   produced by the steps above.
 
-Work through the notebooks in numeric order (`01` → `05`): each one
-maps directly to a step above.
+Notebooks `01` → `07` map directly to these stages.
 
 ## Explicit non-goals
 
