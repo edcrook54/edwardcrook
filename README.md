@@ -1,76 +1,45 @@
 # Ed Crook
 
-Trading and Operations graduate at IG Group (FTSE 100 fintech), having
-rotated across the Flow (FX & Crypto) Dealing desk and the Consumer AI
-team. On the dealing desk I price and build fair value models while
-managing the expiry of institutional positions and hedging risk
-accordingly — a process that has driven an interest in the microstructure
-of crypto markets and the mechanics of algorithmic market making. In the
-Consumer AI team, I won a division-wide delivery award (5 of 500) for
-transforming AI adoption across Trading & Operations: replacing an
-entirely SQL–Excel–pivot table–deck analytical framework with a fully
-MCP-based, natural-language-first architecture built on shared Claude
-Code infrastructure. Both rotations have given me technical coding and
-software knowledge alongside market exposure, drawing me toward
-technical, algorithmic trading roles.
+I work in trading and got pulled into the crypto side of things — pricing
+and hedging FX/crypto flow during the day got me curious about what's
+actually going on underneath: market microstructure, order flow, how a
+signal survives contact with real costs. This repo is where that curiosity
+turns into actual code instead of just opinions.
 
-This repository is where that interest turns into code: independent
-research projects built to be read end-to-end, not just run.
-
-## Featured project
+## What's in here
 
 ### [crypto-cointegration-signal](./crypto-cointegration-signal)
 
-A research-note-style walkthrough of building a cointegration-based pairs
-trading signal on crypto tick data — from raw Kraken exports, through
-dollar bars, a Kalman-filtered hedge ratio, and a walk-forward,
-cost-adjusted, out-of-sample backtest, to a self-audit stage that
-independently checks the statistics, the AFML methodology, the charts and
-the narrative before calling it done.
+A full stat-arb research pipeline, start to finish, on crypto tick data:
+raw Kraken exports → dollar bars → a Kalman-filtered hedge ratio →
+walk-forward, cost-adjusted backtest → a self-audit pass before calling it
+done.
 
-It reports an honest, unflattering result on purpose: the traded pair is
-only modestly profitable out-of-sample and loses money in-sample, and
-that's stated plainly rather than smoothed over. The audit process itself
-caught two real bugs that had been quietly flattering the original
-numbers — see [`AUDIT.md`](./crypto-cointegration-signal/AUDIT.md) for the
-full trail.
+It's deliberately not a highlight reel. The pair that gets traded is only
+modestly profitable out-of-sample and loses money in-sample, and the
+README says so up front rather than burying it. The audit step (see
+[`AUDIT.md`](./crypto-cointegration-signal/AUDIT.md)) actually caught two
+bugs that were quietly flattering the original numbers — a seed-reuse bug
+and a look-ahead leak — before this version existed.
 
-## Professional experience
+## Skills this repo is meant to show
 
-**IG Group (FTSE 100 Fintech) — Trading & Operations Graduate Analyst**
-*Sep 2025 – Present*
+- **Time-series / quant methods**: dollar bars (volume-clock sampling
+  instead of calendar-clock), Engle-Granger cointegration scanned across
+  many random windows rather than one fixed window, Kalman-filtered
+  time-varying hedge ratios, proper walk-forward train/test splits.
+- **Honest statistics**: unit-root checks on cointegration test inputs,
+  reporting distributions of p-values instead of a single pass/fail,
+  flagging multiple-comparison risk instead of ignoring it.
+- **Software structure**: a real `src/` layout — data loading, bar
+  construction, alignment, signals, backtest, evaluation kept as separate,
+  testable modules, not one big notebook.
+- **Cost-aware backtesting**: every reported number is net of a stated
+  transaction cost assumption, not a gross-return number dressed up.
+- **Self-auditing workflow**: four independent review checks (statistical
+  validity, AFML methodology, chart honesty, narrative honesty) run
+  against the finished project specifically to catch my own mistakes
+  before calling it done, rather than one self-congratulatory pass.
 
-**Flow (FX & Cryptocurrency) Dealing** — Graduate Rotation · 2026–Present
-- Priced and built fair value models for FX and crypto instruments,
-  supporting institutional client flow and intraday risk decisions.
-- Responsible for expiring and rolling institutional positions with daily
-  notional exposure in the ten figures, hedging residual risk using swaps
-  and spot/forward instruments.
-- Developed hands-on intuition for crypto market microstructure, order
-  flow dynamics, and liquidity provision — forming the basis of the
-  ongoing cointegration research above.
-
-**Consumer AI** — Graduate Rotation · 2025–2026
-- Won the Trading & Operations division-wide delivery award — one of five
-  recipients from a 500-person division — for transforming AI adoption
-  across the function.
-- Designed and deployed shared Claude Code architecture enabling
-  MCP-based, natural-language-first analytics, replacing a legacy
-  SQL–Excel–pivot table–deck workflow across the entire division.
-- Applied Python and XGBoost to build clustering models for client
-  segmentation analysis of trade behaviour.
-
-## Technical skills
-
-- **Programming & data manipulation:** OOP-style Python (pandas, polars,
-  numpy, scikit-learn — k-means and XGBoost, seaborn), SQL
-- **Data platforms:** Google Cloud Platform (GCP), BigQuery, Looker, LookML
-- **Business tools:** Advanced Excel, PowerPoint
-- **Languages:** English (native), French (business proficient)
-
-## Education
-
-- **University of Nottingham** (2020–2025) — BSc Economics, Upper Second
-  Class (68%)
-- **RGS Guildford** (2015–2020) — A Levels: Mathematics and French (A\*),
-  Further Mathematics and Economics (A)
+More will land here as I build it — this is a working repo, not a
+one-off showcase.
