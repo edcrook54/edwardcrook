@@ -1,0 +1,80 @@
+assets:
+  - SOL
+  - BCH
+  - ADA
+  - XRP
+
+pairs:
+  # Fill in once the cointegration scan tells you which pairs are worth
+  # carrying forward - don't hand-pick before running the scan.
+  - [SOL, BCH]
+  - [SOL, ADA]
+  - [SOL, XRP]
+  - [BCH, ADA]
+  - [BCH, XRP]
+  - [ADA, XRP]
+
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  target_bars: 2000        # per-asset dollar bar count, re-derive threshold AFTER date trimming
+
+nicher_assets:
+  # Same four coins, GBP-quoted instead of USD-quoted. GBP is a much thinner
+  # market on Kraken for these (e.g. BCH_GBP has about 1% of BCH_USD's tick
+  # count) - using the same coins rather than different ones isolates "less
+  # flow" as the thing being tested, instead of mixing it up with "different
+  # asset fundamentals". See notebooks/07_nicher_pairs.ipynb.
+  - SOL_GBP
+  - BCH_GBP
+  - ADA_GBP
+  - XRP_GBP
+
+nicher_pairs:
+  - [SOL_GBP, BCH_GBP]
+  - [SOL_GBP, ADA_GBP]
+  - [SOL_GBP, XRP_GBP]
+  - [BCH_GBP, ADA_GBP]
+  - [BCH_GBP, XRP_GBP]
+  - [ADA_GBP, XRP_GBP]
+
+alignment:
+  method: calendar_join     # backward-fill join on a fixed grid, chosen over merge_asof+reduce
+  grid_freq: 1h
+  common_start: "2021-06-17"  # SOL's listing date on Kraken - the binding constraint across all 4 assets
+
+cointegration:
+  test: engle_granger
+  window_type: random       # sample random windows across history rather than one fixed window
+  n_windows: 50
+  window_length_days: 30
+  significance_level: 0.05
+  random_seed: 42
+
+hedge_ratio:
+  method: kalman
+  delta: 0.0001                   # state transition covariance scale - controls how fast the ratio can drift
+  observation_covariance: 0.001   # assumed noise on the observed spread relationship
+
+signal:
+  lookback: 60
+  entry_z: 2.0
+  exit_z: 0.5
+
+triple_barrier:
+  # Bounds every primary-model entry with a profit-take (reuses signal.exit_z),
+  # a wider stop-loss, and a max holding period - closing the "no stop-loss /
+  # no max-holding-period exit" gap flagged in AUDIT.md. Also produces the
+  # labels the meta-labeling model (notebooks/06) is trained on.
+  stop_z: 4.0            # must be wider than signal.entry_z - a worse adverse move, not the entry itself
+  max_holding_bars: 240  # 10 days on the hourly grid
+
+meta_labeling:
+  min_probability: 0.5   # predicted P(profit-take) at or below this sizes the bet to flat
+  random_seed: 42
+
+backtest:
+  cost_model: bps_per_side
+  cost_bps: 5                # placeholder - replace with a real Kraken taker fee + slippage estimate
+  train_test_split: walk_forward
+  out_of_sample_fraction: 0.3

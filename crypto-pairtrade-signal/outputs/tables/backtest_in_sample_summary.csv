@@ -1,0 +1,2 @@
+sharpe,sharpe_se,max_drawdown,hit_rate,total_return,n_periods,asset_a,asset_b,phase
+0.22373820540719228,0.5643785957861819,-1.466144129614694,0.37433671008200675,-0.19407704303584994,27502,BCH,ADA,in_sample
