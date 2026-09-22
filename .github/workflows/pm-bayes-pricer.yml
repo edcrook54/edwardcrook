@@ -1,0 +1,55 @@
+name: pm-bayes-pricer
+
+on:
+  push:
+    paths: ["pm-bayes-pricer/**", ".github/workflows/pm-bayes-pricer.yml"]
+  pull_request:
+    paths: ["pm-bayes-pricer/**", ".github/workflows/pm-bayes-pricer.yml"]
+
+defaults:
+  run:
+    working-directory: pm-bayes-pricer
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: pmq
+          POSTGRES_PASSWORD: pmq
+          POSTGRES_DB: pmq
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U pmq -d pmq"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pm-bayes-pricer/pyproject.toml
+      - run: python -m pip install -e ".[dev]"
+      - run: ruff check . && ruff format --check .
+      - run: mypy
+      - run: pytest
+        env:
+          PMQ_TEST_DATABASE_URL: postgresql://pmq:pmq@localhost:5432/pmq
+      - name: Schema applies cleanly, and twice (idempotent)
+        env:
+          PGPASSWORD: pmq
+        run: |
+          psql -h localhost -U pmq -d pmq -v ON_ERROR_STOP=1 -f src/pmq/db/schema.sql
+          psql -h localhost -U pmq -d pmq -v ON_ERROR_STOP=1 -f src/pmq/db/schema.sql
+
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f docker/Dockerfile.app -t pmq-app:ci .
+        working-directory: pm-bayes-pricer
+      - run: docker run --rm pmq-app:ci

@@ -1,0 +1,416 @@
+{
+ "uid": "pmq-pricer",
+ "title": "Bitcoin touch markets: model vs Polymarket",
+ "tags": [
+  "pmq"
+ ],
+ "timezone": "utc",
+ "schemaVersion": 39,
+ "version": 1,
+ "refresh": "1m",
+ "time": {
+  "from": "now-7d",
+  "to": "now"
+ },
+ "templating": {
+  "list": [
+   {
+    "name": "market",
+    "label": "Contract",
+    "type": "query",
+    "datasource": {
+     "type": "grafana-postgresql-datasource",
+     "uid": "pg"
+    },
+    "refresh": 2,
+    "query": "SELECT title AS __text, market_id AS __value FROM core.market WHERE kind = 'touch' AND resolved_yes IS NULL AND close_time > now() ORDER BY event_key, direction, barrier",
+    "sort": 0
+   }
+  ]
+ },
+ "panels": [
+  {
+   "id": 1,
+   "type": "stat",
+   "title": "Bitcoin (Binance)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prom"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 0,
+    "y": 0
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "pmq_spot_price{asset=\"XBT\"}",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prom"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "currencyUSD"
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 2,
+   "type": "stat",
+   "title": "Seconds since last good cycle",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prom"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 4,
+    "y": 0
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "time() - pmq_pricer_last_success_timestamp_seconds",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prom"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "s",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       },
+       {
+        "color": "orange",
+        "value": 120
+       },
+       {
+        "color": "red",
+        "value": 300
+       }
+      ]
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 3,
+   "type": "stat",
+   "title": "Markets priced",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prom"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 8,
+    "y": 0
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "pmq_markets_priced",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prom"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none"
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 4,
+   "type": "stat",
+   "title": "Suspicious edges",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prom"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 12,
+    "y": 0
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "pmq_suspicious_edges",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prom"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none",
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       },
+       {
+        "color": "red",
+        "value": 1
+       }
+      ]
+     }
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 5,
+   "type": "stat",
+   "title": "Binance minus Kraken (bps)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prom"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 16,
+    "y": 0
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "pmq_spot_basis_bps{asset=\"XBT\"}",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prom"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none"
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 6,
+   "type": "stat",
+   "title": "Resolved contracts scored",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prom"
+   },
+   "gridPos": {
+    "h": 4,
+    "w": 4,
+    "x": 20,
+    "y": 0
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "pmq_scored_contracts",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prom"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "none"
+    },
+    "overrides": []
+   }
+  },
+  {
+   "id": 7,
+   "type": "timeseries",
+   "title": "Model vs market: selected contract",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 0,
+    "y": 4
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "time_series",
+     "rawQuery": true,
+     "rawSql": "SELECT fv.ts AS time, fv.p AS \"model\", fv.p_low AS \"model 10th pct\", fv.p_high AS \"model 90th pct\", fv.mid AS \"market mid\" FROM core.fair_value fv WHERE fv.market_id = '$market' AND $__timeFilter(fv.ts) ORDER BY 1",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  },
+  {
+   "id": 8,
+   "type": "timeseries",
+   "title": "Bitcoin hourly close (Binance)",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 12,
+    "y": 4
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "time_series",
+     "rawQuery": true,
+     "rawSql": "SELECT ts AS time, close AS \"BTC\" FROM core.spot_bar WHERE asset = 'XBT' AND $__timeFilter(ts) ORDER BY 1",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  },
+  {
+   "id": 9,
+   "type": "table",
+   "title": "Latest cycle: every open contract",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 11,
+    "w": 24,
+    "x": 0,
+    "y": 13
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "table",
+     "rawQuery": true,
+     "rawSql": "SELECT m.title, m.direction, m.barrier, round(fv.p::numeric,3) AS model, round(fv.p_low::numeric,3) AS p10, round(fv.p_high::numeric,3) AS p90, round(fv.mid::numeric,3) AS market_mid, round(fv.edge_buy::numeric,3) AS edge_buy_after_fees, round(fv.edge_sell::numeric,3) AS edge_sell_after_fees, round(fv.implied_vol::numeric,3) AS implied_vol, round(fv.sigma_median::numeric,3) AS model_vol FROM core.fair_value fv JOIN core.market m USING (market_id) WHERE fv.ts = (SELECT max(ts) FROM core.fair_value) AND NOT fv.already_touched ORDER BY m.close_time, m.direction, m.barrier",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  },
+  {
+   "id": 10,
+   "type": "barchart",
+   "title": "Implied volatility by upward strike (nearest expiry) vs model volatility",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 0,
+    "y": 24
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "table",
+     "rawQuery": true,
+     "rawSql": "SELECT m.barrier::text AS strike, fv.implied_vol AS \"market-implied\", fv.sigma_median AS \"model median\" FROM core.fair_value fv JOIN core.market m USING (market_id) WHERE fv.ts = (SELECT max(ts) FROM core.fair_value) AND m.direction = 'up' AND NOT fv.already_touched AND m.close_time = (SELECT min(m2.close_time) FROM core.fair_value f2 JOIN core.market m2 USING (market_id) WHERE f2.ts = (SELECT max(ts) FROM core.fair_value) AND m2.close_time > now()) ORDER BY m.barrier",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  },
+  {
+   "id": 11,
+   "type": "timeseries",
+   "title": "Rolling Brier score: model vs market (priced 1 day before close)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prom"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 12,
+    "y": 24
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "pmq_rolling_brier_model",
+     "legendFormat": "model",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prom"
+     }
+    },
+    {
+     "refId": "B",
+     "expr": "pmq_rolling_brier_market",
+     "legendFormat": "market",
+     "datasource": {
+      "type": "prometheus",
+      "uid": "prom"
+     }
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+# Visible in the Prometheus UI (Alerts tab). No Alertmanager is wired up yet, so these are
+# for a human looking at a dashboard, not for paging.
+groups:
+  - name: pmq
+    rules:
+      - alert: PricerStalled
+        expr: time() - pmq_pricer_last_success_timestamp_seconds > 300
+        for: 2m
+        annotations:
+          summary: "No successful pricing cycle for over 5 minutes"
+      - alert: SpotDataStale
+        expr: pmq_spot_candle_age_seconds > 10800
+        for: 5m
+        annotations:
+          summary: "Newest completed hourly candle is over 3 hours old; pricing is paused"
+      - alert: SuspiciousEdges
+        expr: pmq_suspicious_edges > 0
+        for: 5m
+        annotations:
+          summary: "A market shows an edge above the sanity cap; likely a data or rules problem"
+      - alert: ExchangeBasisLarge
+        expr: abs(pmq_spot_basis_bps) > 30
+        for: 10m
+        annotations:
+          summary: "Binance and Kraken differ by more than 30 bps; barrier checks are basis-sensitive"
+      - alert: ModelWorseThanMarket
+        expr: pmq_scored_contracts >= 30 and pmq_rolling_brier_model > 1.2 * pmq_rolling_brier_market
+        for: 1h
+        annotations:
+          summary: "Rolling Brier score is over 20% worse than the market's on resolved contracts"

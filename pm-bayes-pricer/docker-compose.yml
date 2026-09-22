@@ -1,0 +1,89 @@
+name: pm-bayes-pricer
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-pmq}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pmq}
+      POSTGRES_DB: ${POSTGRES_DB:-pmq}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Applied once, on first initialisation of an empty data volume.
+      - ./src/pmq/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  # Scrapes Polymarket and Kalshi every PMQ_POLL_INTERVAL_SECONDS and stores every quote.
+  # It starts with `make up` so history builds from day one (order-book history cannot be
+  # back-filled later).
+  ingest:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+    command: ["python", "-m", "pmq.ingest", "loop"]
+    environment:
+      PMQ_DATABASE_URL: postgresql://${POSTGRES_USER:-pmq}:${POSTGRES_PASSWORD:-pmq}@postgres:5432/${POSTGRES_DB:-pmq}
+      PMQ_POLL_INTERVAL_SECONDS: ${PMQ_POLL_INTERVAL_SECONDS:-60}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Prices every open Bitcoin touch market on Polymarket against the fitted model, once a minute.
+  # Paper only: it reads public data and writes rows, and never places an order.
+  pricer:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.app
+    command: ["python", "-m", "pmq.pricer.run", "loop"]
+    environment:
+      PMQ_DATABASE_URL: postgresql://${POSTGRES_USER:-pmq}:${POSTGRES_PASSWORD:-pmq}@postgres:5432/${POSTGRES_DB:-pmq}
+      PMQ_POLL_INTERVAL_SECONDS: ${PMQ_POLL_INTERVAL_SECONDS:-60}
+    expose:
+      - "9108"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+    ports:
+      - "127.0.0.1:9090:9090"
+    depends_on:
+      - pricer
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana-oss:11.1.0
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      POSTGRES_USER: ${POSTGRES_USER:-pmq}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pmq}
+      POSTGRES_DB: ${POSTGRES_DB:-pmq}
+      PMQ_PG_HOST: postgres     # the compose service name; a local (non-Docker) run uses localhost
+      PMQ_PROM_HOST: prometheus
+      PMQ_DASHBOARDS_PATH: /var/lib/grafana/dashboards
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - postgres
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  pgdata:

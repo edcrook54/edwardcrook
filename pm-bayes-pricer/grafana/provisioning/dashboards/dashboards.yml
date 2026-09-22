@@ -1,0 +1,9 @@
+apiVersion: 1
+# PMQ_DASHBOARDS_PATH points at the dashboard JSON files: /var/lib/grafana/dashboards inside the
+# Docker container (see docker-compose.yml's volume mount), or the repo's grafana/dashboards/ for
+# a local, non-Docker run (see docs/setup.md).
+providers:
+  - name: pmq
+    type: file
+    options:
+      path: $__env{PMQ_DASHBOARDS_PATH}

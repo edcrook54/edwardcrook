@@ -1,0 +1,13 @@
+# Backtest configuration. Every parameter that affects a result lives here (never in a notebook),
+# so a run is reproducible from this file plus the tick data.
+asset: SOL
+start: "2022-01-01"
+first_test_year: 2024
+end_year: 2025
+anchor_step_hours: 6       # a new batch of contracts every 6 hours
+horizons_days: [1, 7, 30]
+z_grid: [0.5, 1.0, 1.5, 2.0, 2.5, 3.0]   # strike distance in units of trailing-30d volatility
+ewma_half_life_days: 5.0   # chosen a priori, not tuned on the test years
+bayes_memory_days: 10.0
+min_coverage: 0.9          # skip anchors when <90% of the last 30 days' hours had trades
+n_quadrature: 15
