@@ -21,6 +21,19 @@ the README says so up front. The audit step (see
 bugs that had been flattering the original numbers — a seed-reuse bug and
 a look-ahead leak — before this version existed.
 
+### [pm-bayes-pricer](./pm-bayes-pricer)
+
+Bayesian first-passage pricing for crypto "will it touch $X" prediction-market contracts, built on
+92M Kraken ticks: closed-form and simulated touch probabilities, volatility forecasting plus a
+Bayesian belief over it, a purged walk-forward backtest, and a live paper-trading pricer against
+Polymarket with Postgres, Prometheus and Grafana behind it.
+
+Same honesty rule applies: a log-HAR volatility forecast averaged over its own uncertainty beats a
+naive rule of thumb on Bitcoin and Ethereum out-of-sample, is inconclusive for Solana (too little
+data yet), and is a wash in the calmest test year — stated plainly rather than smoothed over. Every
+formula is derived from scratch across nine notebooks and checked against Monte Carlo simulation
+in the test suite.
+
 ## Skills this repo is meant to show
 
 - **Time-series / quant methods**: dollar bars (volume-clock sampling
@@ -39,5 +52,11 @@ a look-ahead leak — before this version existed.
   validity, AFML methodology, chart honesty, narrative honesty) run
   against the finished project specifically to catch mistakes before
   calling it done, rather than a single self-review pass.
+
+## Tools I use
+
+- [ponytail](https://github.com/dietrichgebert/ponytail) — an AI coding-agent
+  skill that pushes agents to write the minimum code necessary before
+  reaching for a new implementation.
 
 More projects will be added here over time.

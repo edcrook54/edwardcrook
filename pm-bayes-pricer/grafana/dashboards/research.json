@@ -1,0 +1,284 @@
+{
+ "uid": "pmq-research",
+ "title": "Bitcoin touch-contract backtest results",
+ "tags": [
+  "pmq"
+ ],
+ "timezone": "utc",
+ "schemaVersion": 39,
+ "version": 3,
+ "refresh": "",
+ "time": {
+  "from": "now-5y",
+  "to": "now"
+ },
+ "templating": {
+  "list": [
+   {
+    "name": "asset",
+    "label": "Asset",
+    "type": "custom",
+    "query": "Bitcoin : XBT,Ethereum : ETH,Solana : SOL",
+    "current": {
+     "text": "Bitcoin",
+     "value": "XBT"
+    },
+    "options": [
+     {
+      "text": "Bitcoin",
+      "value": "XBT",
+      "selected": true
+     },
+     {
+      "text": "Ethereum",
+      "value": "ETH",
+      "selected": false
+     },
+     {
+      "text": "Solana",
+      "value": "SOL",
+      "selected": false
+     }
+    ]
+   }
+  ]
+ },
+ "panels": [
+  {
+   "id": 0,
+   "type": "text",
+   "title": "",
+   "gridPos": {
+    "h": 3,
+    "w": 24,
+    "x": 0,
+    "y": 0
+   },
+   "options": {
+    "mode": "markdown",
+    "content": "### Bitcoin touch-contract backtest, out-of-sample, 2019-2025 (Ethereum from 2020, Solana from 2024).\nPick an **asset** above. Log loss and Brier: lower is better. `naive_2x` is the rule-of-thumb baseline (twice the finish-beyond probability); `har_mix` is the model this project ships. Full derivation and discussion: [notebooks/08_backtest_and_calibration.ipynb](../../notebooks/08_backtest_and_calibration.ipynb)."
+   }
+  },
+  {
+   "id": 1,
+   "type": "barchart",
+   "title": "Log loss by model (lower is better)",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 0,
+    "y": 3
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "table",
+     "rawQuery": true,
+     "rawSql": "SELECT model, log_loss FROM core.backtest_score WHERE asset = '$asset' AND year = 0 ORDER BY log_loss",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "custom": {
+      "orientation": "horizontal"
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal",
+    "xTickLabelRotation": 0
+   }
+  },
+  {
+   "id": 2,
+   "type": "barchart",
+   "title": "Brier skill vs the naive rule (higher is better; 0 = tied)",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 12,
+    "x": 12,
+    "y": 3
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "table",
+     "rawQuery": true,
+     "rawSql": "SELECT model, brier_skill_vs_naive FROM core.backtest_score WHERE asset = '$asset' AND year = 0 AND model != 'naive_2x' ORDER BY brier_skill_vs_naive DESC",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal"
+   }
+  },
+  {
+   "id": 3,
+   "type": "table",
+   "title": "Is har_mix really better than the naive rule? (95% interval, week-clustered bootstrap)",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 8,
+    "w": 12,
+    "x": 0,
+    "y": 12
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "table",
+     "rawQuery": true,
+     "rawSql": "SELECT model, round(log_loss_diff::numeric,4) AS log_loss_diff, round(ci_low::numeric,4) AS ci_95_low, round(ci_high::numeric,4) AS ci_95_high, CASE WHEN ci_high < 0 THEN 'better' WHEN ci_low > 0 THEN 'worse' ELSE 'no evidence either way' END AS verdict FROM core.backtest_diff WHERE asset = '$asset' AND vs = 'naive_2x' ORDER BY log_loss_diff",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  },
+  {
+   "id": 4,
+   "type": "barchart",
+   "title": "Calibration slope by model (1.0 = perfectly calibrated)",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 8,
+    "w": 12,
+    "x": 12,
+    "y": 12
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "table",
+     "rawQuery": true,
+     "rawSql": "SELECT model, calibration_slope FROM core.backtest_score WHERE asset = '$asset' AND year = 0 ORDER BY calibration_slope DESC",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "custom": {
+      "thresholdsStyle": {
+       "mode": "line"
+      }
+     },
+     "thresholds": {
+      "mode": "absolute",
+      "steps": [
+       {
+        "color": "green",
+        "value": null
+       }
+      ]
+     }
+    },
+    "overrides": []
+   },
+   "options": {
+    "orientation": "horizontal"
+   }
+  },
+  {
+   "id": 5,
+   "type": "timeseries",
+   "title": "Year by year: naive rule vs the shipped model (log loss)",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 9,
+    "w": 24,
+    "x": 0,
+    "y": 20
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "time_series",
+     "rawQuery": true,
+     "editorMode": "code",
+     "rawSql": "SELECT make_date(year,1,1) AS time, model, log_loss FROM core.backtest_score WHERE asset = '$asset' AND year > 0 AND model IN ('naive_2x','har_mix') ORDER BY 1"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  },
+  {
+   "id": 6,
+   "type": "table",
+   "title": "Every model, every asset, all years combined",
+   "datasource": {
+    "type": "grafana-postgresql-datasource",
+    "uid": "pg"
+   },
+   "gridPos": {
+    "h": 10,
+    "w": 24,
+    "x": 0,
+    "y": 29
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "datasource": {
+      "type": "grafana-postgresql-datasource",
+      "uid": "pg"
+     },
+     "format": "table",
+     "rawQuery": true,
+     "rawSql": "SELECT asset, model, n, round(log_loss::numeric,4) AS log_loss, round(brier::numeric,4) AS brier, round(brier_skill_vs_naive::numeric,4) AS brier_skill_vs_naive, round(calibration_slope::numeric,3) AS calibration_slope FROM core.backtest_score WHERE year = 0 ORDER BY asset, log_loss",
+     "editorMode": "code"
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {},
+    "overrides": []
+   }
+  }
+ ]
+}
