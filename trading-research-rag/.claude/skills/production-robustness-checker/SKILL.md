@@ -26,9 +26,9 @@ sufficient coverage.
 
 - Confirm `content_hash()` is computed deterministically regardless of
   input chunk order (check `tests/test_index.py` covers this, not just that
-  the implementation sorts — verify the test actually varies order).
+  the implementation sorts; verify the test actually varies order).
 - Confirm `Index.load` genuinely refuses to serve a mismatched
-  hash/pickle pair rather than warning and continuing. Trace the exact
+  hash/pickle pair instead of warning and continuing. Trace the exact
   exception path from `api.py`'s `/health` and `/search` down to
   `Index.load` to confirm a stale-index failure surfaces as a 503, not a
   silent fallback to whatever's in memory.
@@ -66,7 +66,7 @@ sufficient coverage.
 ### 4. Does CI actually exercise the live service?
 
 - Check `.github/workflows/trading-research-rag.yml` (once it exists) runs
-  more than `ruff`/`mypy`/`pytest` against the library code — confirm there
+  more than `ruff`/`mypy`/`pytest` against the library code. Confirm there
   is a step that actually builds the index and hits `/health` or `/search`
   over HTTP (e.g. via `uvicorn` + `curl`/`httpx` in CI), not just unit
   tests that import `api.py`'s functions directly in-process. In-process
@@ -75,7 +75,7 @@ sufficient coverage.
   but a real HTTP round-trip is the stronger claim and should be preferred
   if the README asserts "production service."
 - Confirm the CI path filter actually matches this project's directory
-  (compare against `pm-bayes-pricer`'s workflow's filter pattern) — a
+  (compare against `pm-bayes-pricer`'s workflow's filter pattern). A
   misconfigured path filter would mean this project's changes never
   actually trigger its own CI.
 
@@ -84,7 +84,7 @@ sufficient coverage.
 - The README's "Not yet done" section states the Docker/Grafana stack
   isn't wired up and that only `/metrics` (Prometheus text format) is
   exposed directly. Confirm this is actually true by hitting `/metrics`
-  and confirming it returns real counters/histograms, not a stub — an
+  and confirming it returns real counters/histograms, not a stub. An
   unwired observability claim in either direction (claiming more or less
   than what's there) is a narrative-honesty issue as much as a robustness
   one.
@@ -105,14 +105,14 @@ sufficient coverage.
   an empty result instead of a 503.
 - CI that passes `pytest` but never actually starts the service.
 - A "not yet done" claim in the README that turns out to already be done
-  (or vice versa) — either direction undermines the project's own honesty
+  (or vice versa). Either direction undermines the project's own honesty
   standard.
 
 ## Rationalization Table
 
 | Excuse | Reality |
 |---|---|
-| "The tests import api.py's functions, that's basically testing the API" | Importing and calling a FastAPI route function directly skips request parsing, validation, and the ASGI layer entirely — it tests the handler logic, not the API contract. |
+| "The tests import api.py's functions, that's basically testing the API" | Importing and calling a FastAPI route function directly skips request parsing, validation, and the ASGI layer entirely. It tests the handler logic, not the API contract. |
 | "An empty query is a user error, not something to handle" | A production service returns a clear 4xx for bad input; letting it fall through to an unhandled exception is exactly the gap between "demo" and "production" this project claims to close. |
 
 ## Output Format

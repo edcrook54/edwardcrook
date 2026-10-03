@@ -37,16 +37,16 @@ in the test suite.
 ### [trading-research-rag](./trading-research-rag)
 
 A hybrid BM25 + LSA retrieval service built over this repo's own quant-research
-corpus (both projects above) — built and CI-gated as a production service, not a
+corpus (both projects above). Built and CI-gated as a production service, not a
 chatbot demo: from-scratch BM25 and reciprocal-rank-fusion, a two-tier eval set
 (hand-labeled + bootstrapped) with bootstrap confidence intervals, and a real
 regression gate in CI.
 
 Same honesty rule applies: the headline finding is that plain BM25 beats the
 hybrid approach on this corpus, confirmed by a committed, re-runnable parameter
-sweep rather than asserted once. The project's own audit (see
+sweep instead of asserted once. The project's own audit (see
 [`AUDIT.md`](./trading-research-rag/AUDIT.md)) caught several real bugs before
-this version existed — a chunk-id collision across projects, a stale-index bug
+this version existed: a chunk-id collision across projects, a stale-index bug
 where the live service wouldn't pick up a rebuilt index without a restart, and a
 mis-chunking bug where a code-fence comment was misread as a markdown header and
 actually corrupted citations in the real corpus.
@@ -54,15 +54,15 @@ actually corrupted citations in the real corpus.
 ### [llm-news-signal](./llm-news-signal)
 
 Does an LLM-extracted hawkish/dovish score from real FOMC statement text carry
-predictive power for BTC/ETH forward returns — tested with the same
+predictive power for BTC/ETH forward returns? Tested with the same
 walk-forward, cost-adjusted, multiple-comparison-aware rigor as
-`crypto-cointegration-signal`? The LLM is used once as a feature extractor, not
+`crypto-cointegration-signal`. The LLM is used once as a feature extractor, not
 an agent: its reliability as a labeler (Cohen's kappa against 38 independent
 hand labels) is validated and enforced as a gate before any downstream claim is
 trusted.
 
-**Headline result: pending** — this needs a live Anthropic API call this
-environment didn't have a key for. Rather than fake a result, the full
+**Headline result: pending.** This needs a live Anthropic API call this
+environment didn't have a key for. I didn't want to fake a result, so the full
 pipeline (38 real FOMC statements compiled verbatim from federalreserve.gov,
 EST/EDT-correct event timing, Newey-West rank-IC, Benjamini-Hochberg correction
 across all 6 asset×horizon tests, cost-adjusted backtest) is built, tested, and
@@ -75,15 +75,15 @@ were one continuously-held position) before this version existed.
 
 ### [trading-desk-agent](./trading-desk-agent)
 
-A tool-using research-desk agent over this repo's own quant projects — answers
-open-ended questions by actually calling real tools (retrieval, statistical
-tests, a sandboxed backtest re-run, restricted file reads) and cites exactly
-where every claim came from. Includes a live multi-agent audit-dispatch mode
-that productionizes this repo's own project-audit pattern (the one described
-above, used to catch real bugs in every other project here) as real
-orchestrated code, not just Claude Code instructions.
+A tool-using research-desk agent over this repo's own quant projects. It
+answers open-ended questions by actually calling real tools (retrieval,
+statistical tests, a sandboxed backtest re-run, restricted file reads) and
+cites exactly where every claim came from. Includes a live multi-agent
+audit-dispatch mode that productionizes this repo's own project-audit pattern
+(the one described above, used to catch real bugs in every other project
+here) as real orchestrated code, not just Claude Code instructions.
 
-**Live-agent result: pending**, same honesty rule as `llm-news-signal` — both
+**Live-agent result: pending**, same honesty rule as `llm-news-signal`. Both
 the agent loop and the audit-dispatch mode need real API calls this
 environment didn't have a key for. What's real right now: all four tools
 (including a genuine subprocess call to `pm-bayes-pricer`'s actual backtest CLI
@@ -93,7 +93,7 @@ a scripted client, and the async multi-checker dispatch's genuine concurrency
 [`AUDIT.md`](./trading-desk-agent/AUDIT.md)) caught a citation-precision metric
 that falsely flagged correctly-cited sources ending a sentence, and found that
 8 of its 16 gold eval questions expected a tool to find content it was never
-actually indexed to reach — both fixed and re-verified before this version
+actually indexed to reach. Both fixed and re-verified before this version
 existed.
 
 ## Skills this repo is meant to show
@@ -123,10 +123,10 @@ existed.
 - **LLM-as-labeler validation**: treating an LLM's extracted score as a noisy
   labeler whose reliability (Cohen's kappa, Pearson correlation against
   independent human labels) must clear a stated threshold before being
-  trusted in any downstream statistic, enforced as a code-level gate rather
-  than a separate step that could be skipped — and refusing to fabricate a
-  headline result when the real data dependency (a live API key) wasn't
-  available, rather than quietly faking one.
+  trusted in any downstream statistic, enforced as a code-level gate instead
+  of a separate step that could be skipped. When the real data dependency (a
+  live API key) wasn't available, the headline result stayed marked pending
+  instead of being faked.
 - **Agent engineering**: a bounded tool-use loop built on the raw Anthropic API
   (no framework), four sandboxed tools (subprocess, HTTP, and filesystem access
   each with an enforced allowlist/timeout/path-traversal guard), a live
