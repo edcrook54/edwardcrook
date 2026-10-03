@@ -73,6 +73,29 @@ trading into the "before" price for every single event) and a real
 cost-accounting bug (a vendored cost model wrongly assumed consecutive bets
 were one continuously-held position) before this version existed.
 
+### [trading-desk-agent](./trading-desk-agent)
+
+A tool-using research-desk agent over this repo's own quant projects — answers
+open-ended questions by actually calling real tools (retrieval, statistical
+tests, a sandboxed backtest re-run, restricted file reads) and cites exactly
+where every claim came from. Includes a live multi-agent audit-dispatch mode
+that productionizes this repo's own project-audit pattern (the one described
+above, used to catch real bugs in every other project here) as real
+orchestrated code, not just Claude Code instructions.
+
+**Live-agent result: pending**, same honesty rule as `llm-news-signal` — both
+the agent loop and the audit-dispatch mode need real API calls this
+environment didn't have a key for. What's real right now: all four tools
+(including a genuine subprocess call to `pm-bayes-pricer`'s actual backtest CLI
+against its real cached data), the bounded tool-use loop's control flow against
+a scripted client, and the async multi-checker dispatch's genuine concurrency
+(verified by timing). The project's own audit (see
+[`AUDIT.md`](./trading-desk-agent/AUDIT.md)) caught a citation-precision metric
+that falsely flagged correctly-cited sources ending a sentence, and found that
+8 of its 16 gold eval questions expected a tool to find content it was never
+actually indexed to reach — both fixed and re-verified before this version
+existed.
+
 ## Skills this repo is meant to show
 
 - **Time-series / quant methods**: dollar bars (volume-clock sampling
@@ -104,6 +127,13 @@ were one continuously-held position) before this version existed.
   than a separate step that could be skipped — and refusing to fabricate a
   headline result when the real data dependency (a live API key) wasn't
   available, rather than quietly faking one.
+- **Agent engineering**: a bounded tool-use loop built on the raw Anthropic API
+  (no framework), four sandboxed tools (subprocess, HTTP, and filesystem access
+  each with an enforced allowlist/timeout/path-traversal guard), a live
+  multi-agent audit-dispatch mode using genuine `asyncio` concurrency, and an
+  eval harness whose metrics (citation precision, tool-usage recall) are
+  deliberately scoped to what's mechanically checkable without an unvalidated
+  LLM-as-judge.
 
 ## Tools I use
 

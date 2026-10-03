@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "deskagent"
+version = "0.1.0"
+description = "A tool-using research-desk agent over this repo's own quant projects, plus a live multi-agent audit-dispatch mode"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.40",
+    "httpx>=0.27",
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "pyarrow>=16.0",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "prometheus-client>=0.20",
+    "pyyaml>=6.0",
+    "scipy>=1.13",
+    "statsmodels>=0.14",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.10",
+    "pytest>=8.2",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.5",
+    "types-pyyaml>=6.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/deskagent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+asyncio_mode = "auto"
+markers = ["slow: a real subprocess/integration test, not pure-unit (still run by default in CI)"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["statsmodels.*", "pandas.*", "scipy.*", "yaml.*"]
+ignore_missing_imports = true
