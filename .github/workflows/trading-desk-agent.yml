@@ -2,8 +2,10 @@ name: trading-desk-agent
 
 on:
   push:
+    branches: ["main"]
     paths: ["trading-desk-agent/**", ".github/workflows/trading-desk-agent.yml"]
   pull_request:
+    branches: ["main"]
     paths: ["trading-desk-agent/**", ".github/workflows/trading-desk-agent.yml"]
 
 defaults:
