@@ -1,0 +1,130 @@
+[
+  {
+    "id": "rag-headline",
+    "question": "Does hybrid BM25+dense retrieval actually beat plain BM25 in trading-research-rag's own eval, according to its README?",
+    "category": "retrieval",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["plain bm25", "beats"],
+    "gold_citation_substring": "trading-research-rag/README.md"
+  },
+  {
+    "id": "cointegration-lookahead-bug",
+    "question": "What look-ahead bug did crypto-cointegration-signal's audit catch in the z-score signal, and was it fixed?",
+    "category": "audit-history",
+    "expected_tools": ["search_corpus"],
+    "gold_keywords": ["look-ahead", "fixed"],
+    "gold_citation_substring": "AUDIT.md"
+  },
+  {
+    "id": "cointegration-embargo-gap",
+    "question": "Does crypto-cointegration-signal's walk-forward split have an embargo gap at the train/test boundary?",
+    "category": "audit-history",
+    "expected_tools": ["search_corpus"],
+    "gold_keywords": ["embargo", "deferred"],
+    "gold_citation_substring": "AUDIT.md"
+  },
+  {
+    "id": "pm-bayes-headline",
+    "question": "What is pm-bayes-pricer's headline out-of-sample log-loss result for Bitcoin, compared to the naive rule of thumb?",
+    "category": "quant-results",
+    "expected_tools": ["search_corpus"],
+    "gold_keywords": ["log loss", "rule of thumb"],
+    "gold_citation_substring": "pm-bayes-pricer"
+  },
+  {
+    "id": "llm-news-signal-scope",
+    "question": "According to llm-news-signal's own README, how many real FOMC statements does it use, and what's the minimum gap between consecutive meetings?",
+    "category": "quant-results",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["38 real", "41 days"],
+    "gold_citation_substring": "llm-news-signal/README.md"
+  },
+  {
+    "id": "llm-news-signal-pending",
+    "question": "According to llm-news-signal's README, is its headline result real or pending, and why?",
+    "category": "quant-results",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["pending", "anthropic_api_key"],
+    "gold_citation_substring": "llm-news-signal/README.md"
+  },
+  {
+    "id": "trading-rag-chunk-bug",
+    "question": "According to trading-research-rag's own README, what chunk-id bug did its audit catch, and how was it fixed?",
+    "category": "audit-history",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["chunk-id collision", "repo name"],
+    "gold_citation_substring": "trading-research-rag/README.md"
+  },
+  {
+    "id": "stat-test-direct",
+    "question": "I have this series of daily returns: [0.01, -0.02, 0.015, 0.005, -0.01, 0.02, -0.005, 0.01, 0.0, 0.015, -0.01, 0.02]. Is its mean significantly different from zero, using a serial-correlation-robust test?",
+    "category": "direct-computation",
+    "expected_tools": ["run_stat_test"],
+    "gold_keywords": ["newey-west", "p-value"],
+    "gold_citation_substring": null
+  },
+  {
+    "id": "cointegration-direct",
+    "question": "Are these two price series likely cointegrated? series_a=[100,101,99,102,98,103,97,104,96,105,95,106], series_b=[50,50.5,49.5,51,49,51.5,48.5,52,48,52.5,47.5,53]",
+    "category": "direct-computation",
+    "expected_tools": ["run_stat_test"],
+    "gold_keywords": ["cointegrat"],
+    "gold_citation_substring": null
+  },
+  {
+    "id": "backtest-variant",
+    "question": "If we widen SOL's z-score entry grid and use anchor_step_hours=48 instead of the default, what's the resulting log loss for the gbm_har model in pm-bayes-pricer's backtest?",
+    "category": "direct-computation",
+    "expected_tools": ["rerun_backtest_variant"],
+    "gold_keywords": ["log loss", "gbm_har"],
+    "gold_citation_substring": null
+  },
+  {
+    "id": "get-file-direct",
+    "question": "What does pm-bayes-pricer's README say is 'not yet done'?",
+    "category": "direct-file",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["not yet done"],
+    "gold_citation_substring": "pm-bayes-pricer/README.md"
+  },
+  {
+    "id": "cross-project-skill",
+    "question": "According to llm-news-signal's own CLAUDE.md, which other project's audit-checker skill does it reuse verbatim?",
+    "category": "cross-project",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["lopez-de-prado", "verbatim"],
+    "gold_citation_substring": "llm-news-signal/CLAUDE.md"
+  },
+  {
+    "id": "out-of-scope-refusal",
+    "question": "What is the current price of Bitcoin right now, today?",
+    "category": "refusal",
+    "expected_tools": [],
+    "gold_keywords": ["cannot", "don't have", "no tool", "not able", "can't"],
+    "gold_citation_substring": null
+  },
+  {
+    "id": "multiple-comparison-question",
+    "question": "According to llm-news-signal's CLAUDE.md, how many statistical tests does it run in total, and how does it correct for multiple comparisons?",
+    "category": "quant-results",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["benjamini-hochberg", "2 assets x 3 horizons"],
+    "gold_citation_substring": "llm-news-signal/CLAUDE.md"
+  },
+  {
+    "id": "vendoring-rationale",
+    "question": "According to llm-news-signal's README, why did it remove its vendored CostModel instead of keeping it?",
+    "category": "audit-history",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["turnover", "independent"],
+    "gold_citation_substring": "llm-news-signal/README.md"
+  },
+  {
+    "id": "reliability-threshold",
+    "question": "According to llm-news-signal's README, what Cohen's kappa threshold does it require before trusting its LLM extraction, and what's the source of that threshold?",
+    "category": "quant-results",
+    "expected_tools": ["get_file"],
+    "gold_keywords": ["landis & koch", "0.4"],
+    "gold_citation_substring": "llm-news-signal/README.md"
+  }
+]
