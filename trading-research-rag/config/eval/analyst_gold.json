@@ -1,0 +1,96 @@
+[
+  {
+    "query": "Why does loading Kraken tick CSVs need explicit column names instead of relying on a header row?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::4::Data specifics (don't relitigate these)",
+      "crypto-cointegration-signal/README.md::4::Data"
+    ]
+  },
+  {
+    "query": "Why was a calendar-grid backward-fill join chosen over a merge_asof join across the four dollar-bar series?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::4::Data specifics (don't relitigate these)",
+      "crypto-cointegration-signal/README.md::5::Methodology"
+    ]
+  },
+  {
+    "query": "What specific bug did the project-audit catch in the z-score signal, and was it fixed?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::3::1. Look-ahead leak in the z-score signal's degenerate-window floor (FIXED)"
+    ]
+  },
+  {
+    "query": "Why is bet sizing flagged as a limitation in the cointegration-signal audit?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::10::7. Bet sizing is a flat {-1, 0, +1} flag, not conviction-scaled (ADDRESSED, 2026-09-15 extension)"
+    ]
+  },
+  {
+    "query": "Is there an embargo gap at the walk-forward train/test boundary, and how was that finding handled?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::9::6. No embargo gap at the train/test walk-forward boundary (DEFERRED, DISCLOSED)"
+    ]
+  },
+  {
+    "query": "What statistical issue did the probability-test-checker find with the single-window cointegration re-test?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::7::4. Non-significant single-window re-test mischaracterized as \"re-confirmed\" (FIXED)"
+    ]
+  },
+  {
+    "query": "Was a unit-root prerequisite check added before running the cointegration test?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::12::9. No unit-root (ADF) prerequisite check before the cointegration test (FIXED)"
+    ]
+  },
+  {
+    "query": "How is the triple-barrier / meta-labeling extension described for the cointegration-signal project?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::9::Extension: Meta-Labeling",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::0"
+    ]
+  },
+  {
+    "query": "How does the Kalman-filtered hedge ratio differ from a static OLS hedge ratio in the backtest notebook?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::4"
+    ]
+  },
+  {
+    "query": "What four crypto assets does the cointegration-signal project scan for pairwise cointegration?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::2::Overview"
+    ]
+  },
+  {
+    "query": "What is pm-bayes-pricer's headline out-of-sample result for Bitcoin volatility forecasting, compared to a naive rule of thumb?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::4::Headline result (Bitcoin, out-of-sample log loss, lower is better)"
+    ]
+  },
+  {
+    "query": "What does pm-bayes-pricer's notebook series do with overround removal and ladder-to-bucket conversion for Fed-decision markets?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::6::The maths (notebooks, in order)"
+    ]
+  },
+  {
+    "query": "What observability stack does pm-bayes-pricer run behind its live Polymarket pricer?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::2::See the results (2 minutes, nothing to install)",
+      "pm-bayes-pricer/README.md::7::Architecture"
+    ]
+  },
+  {
+    "query": "What is pm-bayes-pricer's one-line pitch and how many Kraken trades does it price from?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::1::pm-bayes-pricer"
+    ]
+  },
+  {
+    "query": "Walk me through the barrier-distance sweep used to sanity-check the first-passage formula.",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::9"
+    ]
+  }
+]

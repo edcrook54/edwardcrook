@@ -1,0 +1,1068 @@
+[
+  {
+    "query": "1. Look-ahead leak in the z-score signal's degenerate-window floor (FIXED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::3::1. Look-ahead leak in the z-score signal's degenerate-window floor (FIXED)"
+    ]
+  },
+  {
+    "query": "1. Prices are probabilities (almost)",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::0",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::1"
+    ]
+  },
+  {
+    "query": "1.1 What a contract is",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::2"
+    ]
+  },
+  {
+    "query": "1.2 Polymarket: one contract per outcome",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::3",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::4",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::5"
+    ]
+  },
+  {
+    "query": "1.3 Kalshi: a ladder instead of buckets",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::10",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::11"
+    ]
+  },
+  {
+    "query": "1.4 Translating the ladder into buckets",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::14",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::15",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::16",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::17",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::18",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::19"
+    ]
+  },
+  {
+    "query": "1.5 Does a gap survive fees?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::20",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::21",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::22",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::23"
+    ]
+  },
+  {
+    "query": "1.6 How the price moved",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::24",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::25"
+    ]
+  },
+  {
+    "query": "10. Multiple comparisons never contextualised against a chance baseline (FIXED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::13::10. Multiple comparisons never contextualised against a chance baseline (FIXED)"
+    ]
+  },
+  {
+    "query": "11. Sharpe/hit-rate point estimates reported with no uncertainty measure (FIXED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::14::11. Sharpe/hit-rate point estimates reported with no uncertainty measure (FIXED)"
+    ]
+  },
+  {
+    "query": "2. Cointegration scanner reused one RNG seed across all six pairs (FIXED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::4::2. Cointegration scanner reused one RNG seed across all six pairs (FIXED)"
+    ]
+  },
+  {
+    "query": "2. Updating beliefs with Bayes",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::0",
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::1"
+    ]
+  },
+  {
+    "query": "2.1 Bayes' rule in one picture",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::2",
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::3",
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::4",
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::5"
+    ]
+  },
+  {
+    "query": "2.2 A belief over several outcomes: the Dirichlet",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::6",
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::7"
+    ]
+  },
+  {
+    "query": "2.3 Which prior was better? Model comparison for free",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::8",
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::9"
+    ]
+  },
+  {
+    "query": "2.4 Combining our model with the market price",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::10",
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::11"
+    ]
+  },
+  {
+    "query": "2026-09-15 extension: meta-labeling (closes findings #7 and #8)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::18::2026-09-15 extension: meta-labeling (closes findings #7 and #8)"
+    ]
+  },
+  {
+    "query": "3. Ambiguous/unlabeled axis units on the headline equity and metric charts (FIXED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::5::3. Ambiguous/unlabeled axis units on the headline equity and metric charts (FIXED)"
+    ]
+  },
+  {
+    "query": "3. Grading forecasts and sizing bets",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::0",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::1"
+    ]
+  },
+  {
+    "query": "3.1 Two ways to score a probability",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::2",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::3"
+    ]
+  },
+  {
+    "query": "3.2 Why these are \"proper\": honesty is the best policy",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::4",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::5"
+    ]
+  },
+  {
+    "query": "3.3 Calibration: do \"70%\" events happen 70% of the time?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::6",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::7",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::8",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::9"
+    ]
+  },
+  {
+    "query": "3.4 Is model A *really* better than the market?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::10",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::11"
+    ]
+  },
+  {
+    "query": "3.5 How much to bet: the Kelly criterion",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::12",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::13"
+    ]
+  },
+  {
+    "query": "3.6 Several outcomes at once",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::18",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::19"
+    ]
+  },
+  {
+    "query": "4. Non-significant single-window re-test mischaracterized as \"re-confirmed\" (FIXED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::7::4. Non-significant single-window re-test mischaracterized as \"re-confirmed\" (FIXED)"
+    ]
+  },
+  {
+    "query": "4. Will it touch the level? First-passage maths from scratch",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::0",
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::1"
+    ]
+  },
+  {
+    "query": "4.1 The model: a random walk in the log-price",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::2",
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::3"
+    ]
+  },
+  {
+    "query": "4.2 The reflection principle: why \"touch\" is roughly double \"finish above\"",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::4",
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::5"
+    ]
+  },
+  {
+    "query": "4.3 With drift: the full formula",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::6",
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::7"
+    ]
+  },
+  {
+    "query": "4.4 \"Touch\" versus \"finish above\": the ratio is not always 2",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::8",
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::9"
+    ]
+  },
+  {
+    "query": "4.5 Real venues do not watch continuously",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::10",
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::11"
+    ]
+  },
+  {
+    "query": "4.6 The clock: probability decays as time runs out",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::12",
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::13"
+    ]
+  },
+  {
+    "query": "4.7 \"Hit X or Y first\"",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::14",
+      "pm-bayes-pricer/notebooks/04_first_passage_from_scratch.ipynb::15"
+    ]
+  },
+  {
+    "query": "5. Selection bias: one pair chosen from six, not corrected or fully contextualised (PARTIALLY ADDRESSED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::8::5. Selection bias: one pair chosen from six, not corrected or fully contextualised (PARTIALLY ADDRESSED)"
+    ]
+  },
+  {
+    "query": "5. Volatility from 92 million Bitcoin trades",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::0",
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::1"
+    ]
+  },
+  {
+    "query": "5.1 What the raw data looks like",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::2",
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::3"
+    ]
+  },
+  {
+    "query": "5.2 Estimating volatility: many recipes, one target",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::6",
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::7",
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::8"
+    ]
+  },
+  {
+    "query": "5.3 Microstructure noise: the volatility signature plot",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::10",
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::9"
+    ]
+  },
+  {
+    "query": "5.4 Jumps: when one return dominates a day",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::11",
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::12"
+    ]
+  },
+  {
+    "query": "5.5 Forecasting volatility: what predicts the next week?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::13",
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::14"
+    ]
+  },
+  {
+    "query": "6. Bayesian volatility: how sure are we, and why it matters",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::0",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::1"
+    ]
+  },
+  {
+    "query": "6. No embargo gap at the train/test walk-forward boundary (DEFERRED, DISCLOSED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::9::6. No embargo gap at the train/test walk-forward boundary (DEFERRED, DISCLOSED)"
+    ]
+  },
+  {
+    "query": "6.1 Belief as a distribution: the Inverse-Gamma",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::2",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::3"
+    ]
+  },
+  {
+    "query": "6.3 A neat identity: EWMA is Bayesian updating in disguise",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::4",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::5"
+    ]
+  },
+  {
+    "query": "6.4 Is the update code right? Simulation-based calibration",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::6",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::7"
+    ]
+  },
+  {
+    "query": "6.5 Why uncertainty raises far-out probabilities (Jensen's inequality)",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::10",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::11",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::8",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::9"
+    ]
+  },
+  {
+    "query": "6.6 The uncertainty that actually matters: tomorrow's volatility",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::12",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::13",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::14",
+      "pm-bayes-pricer/notebooks/06_bayesian_volatility.ipynb::15"
+    ]
+  },
+  {
+    "query": "7. Bet sizing is a flat {-1, 0, +1} flag, not conviction-scaled (ADDRESSED, 2026-09-15 extension)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::10::7. Bet sizing is a flat {-1, 0, +1} flag, not conviction-scaled (ADDRESSED, 2026-09-15 extension)"
+    ]
+  },
+  {
+    "query": "7. Fat tails, jumps and simulated paths",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::0",
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::1"
+    ]
+  },
+  {
+    "query": "7.1 How fat are the tails?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::2",
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::3"
+    ]
+  },
+  {
+    "query": "7.2 Jump-diffusion (Merton)",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::4",
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::5"
+    ]
+  },
+  {
+    "query": "7.3 Filtered historical simulation (FHS)",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::6",
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::7"
+    ]
+  },
+  {
+    "query": "7.5 The reality check: hit rates in the backtest",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::8",
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::9"
+    ]
+  },
+  {
+    "query": "7.6 Why the bridge matters when simulating",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::10",
+      "pm-bayes-pricer/notebooks/07_fat_tails_and_paths.ipynb::11"
+    ]
+  },
+  {
+    "query": "8. No stop-loss / max-holding-period exit leg (ADDRESSED, 2026-09-15 extension)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::11::8. No stop-loss / max-holding-period exit leg (ADDRESSED, 2026-09-15 extension)"
+    ]
+  },
+  {
+    "query": "8. The backtest: do the models beat the rule of thumb?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::0",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::1"
+    ]
+  },
+  {
+    "query": "8.1 How the experiment works",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::2",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::3"
+    ]
+  },
+  {
+    "query": "8.2 Bitcoin results",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::4",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::5",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::6"
+    ]
+  },
+  {
+    "query": "8.3 Was it consistent, or did one year carry it?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::10",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::9"
+    ]
+  },
+  {
+    "query": "8.4 Calibration: do the stated probabilities mean what they say?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::11",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::12"
+    ]
+  },
+  {
+    "query": "8.5 How many independent observations do we really have?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::13",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::14"
+    ]
+  },
+  {
+    "query": "8.6 Do other coins agree?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::15",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::16"
+    ]
+  },
+  {
+    "query": "8.7 By horizon",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::17",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::18"
+    ]
+  },
+  {
+    "query": "8.8 What this does and does not show",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::19"
+    ]
+  },
+  {
+    "query": "9. No unit-root (ADF) prerequisite check before the cointegration test (FIXED)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::12::9. No unit-root (ADF) prerequisite check before the cointegration test (FIXED)"
+    ]
+  },
+  {
+    "query": "9. The model against a real market: Polymarket Bitcoin touch contracts",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::0",
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::1"
+    ]
+  },
+  {
+    "query": "9.1 A lesson in resolution sources: $107 that flipped a contract",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::2",
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::3"
+    ]
+  },
+  {
+    "query": "9.3 The market's volatility: implied volatility from prediction prices",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::4",
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::5"
+    ]
+  },
+  {
+    "query": "9.4 Does any gap survive fees and spreads?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::10",
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::6",
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::7",
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::8",
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::9"
+    ]
+  },
+  {
+    "query": "9.5 What runs continuously",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/09_against_a_real_market.ipynb::11"
+    ]
+  },
+  {
+    "query": "Align onto a shared calendar grid",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::10",
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::9"
+    ]
+  },
+  {
+    "query": "Architecture decisions already made (implement, don't redesign)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::5::Architecture decisions already made (implement, don't redesign)"
+    ]
+  },
+  {
+    "query": "Bar spacing before alignment",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::7",
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::8"
+    ]
+  },
+  {
+    "query": "Build the GBP-quoted dollar bars and align them",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::2",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::3"
+    ]
+  },
+  {
+    "query": "Checking the pipeline",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::6::Checking the pipeline"
+    ]
+  },
+  {
+    "query": "Cointegrating relationship, visualised",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::6",
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::7"
+    ]
+  },
+  {
+    "query": "Cointegration scan on the GBP universe",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::7",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::8"
+    ]
+  },
+  {
+    "query": "Conviction-scaled out-of-sample backtest",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::11",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::12",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::13",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::14"
+    ]
+  },
+  {
+    "query": "Cost-adjusted backtest (in-sample)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::10",
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::11",
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::12"
+    ]
+  },
+  {
+    "query": "Cross-Asset Cointegration Signal: Digital Assets",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::1::Cross-Asset Cointegration Signal: Digital Assets"
+    ]
+  },
+  {
+    "query": "Daily price paths",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::10",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::9"
+    ]
+  },
+  {
+    "query": "Data exploration",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::0",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::1",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::2"
+    ]
+  },
+  {
+    "query": "Data specifics (don't relitigate these)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::4::Data specifics (don't relitigate these)"
+    ]
+  },
+  {
+    "query": "Design decisions",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::10::Design decisions"
+    ]
+  },
+  {
+    "query": "Does the more stable GBP pair actually backtest better?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::12",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::13",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::14"
+    ]
+  },
+  {
+    "query": "Dollar bars",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::5",
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::6"
+    ]
+  },
+  {
+    "query": "Dollar bars and cross-asset alignment",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::0",
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::1",
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::2"
+    ]
+  },
+  {
+    "query": "Effect of bounding the exit alone (before any sizing change)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::5",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::6"
+    ]
+  },
+  {
+    "query": "Engle-Granger cointegration scan",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::0",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::1"
+    ]
+  },
+  {
+    "query": "Equity curve: in-sample vs out-of-sample",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::10",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::11"
+    ]
+  },
+  {
+    "query": "Explicit non-goals",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::7::Explicit non-goals"
+    ]
+  },
+  {
+    "query": "Extension: Meta-Labeling",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::9::Extension: Meta-Labeling"
+    ]
+  },
+  {
+    "query": "Features and meta-model",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::7",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::8"
+    ]
+  },
+  {
+    "query": "Fees change the maths",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::16",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::17"
+    ]
+  },
+  {
+    "query": "Final review gate (skills-based audit)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::8::Final review gate (skills-based audit)"
+    ]
+  },
+  {
+    "query": "Headline result (Bitcoin, out-of-sample log loss, lower is better)",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::4::Headline result (Bitcoin, out-of-sample log loss, lower is better)"
+    ]
+  },
+  {
+    "query": "Hedge ratio: seeded on train, filtered forward causally",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::4",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::5"
+    ]
+  },
+  {
+    "query": "History coverage per asset",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::7",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::8"
+    ]
+  },
+  {
+    "query": "Honest caveat on the backtest comparison",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::15"
+    ]
+  },
+  {
+    "query": "Honest limitation: backward-fill duplication",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::13",
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::14"
+    ]
+  },
+  {
+    "query": "Honest result",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::14",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::15",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::16"
+    ]
+  },
+  {
+    "query": "How is $w$ chosen? From how well each source has done in the past",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::12",
+      "pm-bayes-pricer/notebooks/02_updating_beliefs_with_bayes.ipynb::13"
+    ]
+  },
+  {
+    "query": "How much less flow are we actually talking about?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::4",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::5",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::6"
+    ]
+  },
+  {
+    "query": "Is the early data usable?",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::4",
+      "pm-bayes-pricer/notebooks/05_volatility_from_ticks.ipynb::5"
+    ]
+  },
+  {
+    "query": "Kalman-filtered hedge ratio (train only)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::4",
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::5"
+    ]
+  },
+  {
+    "query": "Limitations & Honest Caveats",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::11::Limitations & Honest Caveats"
+    ]
+  },
+  {
+    "query": "Limitations, stated plainly",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::17"
+    ]
+  },
+  {
+    "query": "Meta-labeling: bounded exits and conviction-scaled sizing",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::0",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::1"
+    ]
+  },
+  {
+    "query": "Metric comparison",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::12",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::13"
+    ]
+  },
+  {
+    "query": "Multiple comparisons: what would chance alone produce?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::10",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::11",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::9"
+    ]
+  },
+  {
+    "query": "Nicher Pairs: Does Less Flow Mean More Opportunity?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::10::Nicher Pairs: Does Less Flow Mean More Opportunity?"
+    ]
+  },
+  {
+    "query": "Nicher pairs: does less flow mean more opportunity?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::0",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::1"
+    ]
+  },
+  {
+    "query": "Non-negotiable values",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::3::Non-negotiable values"
+    ]
+  },
+  {
+    "query": "Not yet done",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::11::Not yet done"
+    ]
+  },
+  {
+    "query": "Out-of-sample / walk-forward test",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::0",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::1"
+    ]
+  },
+  {
+    "query": "Out-of-sample evaluation of the meta-model itself",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::10",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::9"
+    ]
+  },
+  {
+    "query": "Pair selection",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::16",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::17"
+    ]
+  },
+  {
+    "query": "Per-pair summary",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::7",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::8"
+    ]
+  },
+  {
+    "query": "Prerequisite: are the inputs actually I(1)?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::2",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::3",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::4"
+    ]
+  },
+  {
+    "query": "Project Audit",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::1::Project Audit"
+    ]
+  },
+  {
+    "query": "Project Structure",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::12::Project Structure"
+    ]
+  },
+  {
+    "query": "Quick start",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::8::Quick start"
+    ]
+  },
+  {
+    "query": "Re-verify cointegration on the train window only",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::2",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::3"
+    ]
+  },
+  {
+    "query": "Repairing a broken ladder",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::12",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::13"
+    ]
+  },
+  {
+    "query": "Reproducing This",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::14::Reproducing This"
+    ]
+  },
+  {
+    "query": "Return correlation structure (common window only)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::11",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::12",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::13"
+    ]
+  },
+  {
+    "query": "Run the scan",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::5",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::6"
+    ]
+  },
+  {
+    "query": "Sanity check: aligned price paths",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::11",
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::12"
+    ]
+  },
+  {
+    "query": "Scope and limits",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::3::Scope and limits"
+    ]
+  },
+  {
+    "query": "See the results (2 minutes, nothing to install)",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::2::See the results (2 minutes, nothing to install)"
+    ]
+  },
+  {
+    "query": "Selection-bias check: how do the other 5 candidate pairs backtest?",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::13",
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::14"
+    ]
+  },
+  {
+    "query": "Self-Auditing Review Process",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::7::Self-Auditing Review Process"
+    ]
+  },
+  {
+    "query": "Signal + backtest, same calibration for both windows",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::6",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::7",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::8",
+      "crypto-cointegration-signal/notebooks/05_out_of_sample.ipynb::9"
+    ]
+  },
+  {
+    "query": "Signal construction and backtest",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::0",
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::1"
+    ]
+  },
+  {
+    "query": "Stability heatmap across the asset grid",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::14",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::15"
+    ]
+  },
+  {
+    "query": "The maths (notebooks, in order)",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::6::The maths (notebooks, in order)"
+    ]
+  },
+  {
+    "query": "The overround, and who \"owns\" it",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::6",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::7",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::8",
+      "pm-bayes-pricer/notebooks/01_prices_are_probabilities.ipynb::9"
+    ]
+  },
+  {
+    "query": "Tick-level summary",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::3",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::4",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::5",
+      "crypto-cointegration-signal/notebooks/01_data_exploration.ipynb::6"
+    ]
+  },
+  {
+    "query": "Trim to the common window",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::3",
+      "crypto-cointegration-signal/notebooks/02_dollar_bars.ipynb::4"
+    ]
+  },
+  {
+    "query": "Triple-barrier labels",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::2",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::3",
+      "crypto-cointegration-signal/notebooks/06_meta_labeling.ipynb::4"
+    ]
+  },
+  {
+    "query": "USD vs. GBP, pair by pair",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::10",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::11",
+      "crypto-cointegration-signal/notebooks/07_nicher_pairs.ipynb::9"
+    ]
+  },
+  {
+    "query": "Verified sound (explicit passes from all four checkers)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::16::Verified sound (explicit passes from all four checkers)"
+    ]
+  },
+  {
+    "query": "Walk-forward split",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::2",
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::3"
+    ]
+  },
+  {
+    "query": "What changed as a result of this audit",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/AUDIT.md::17::What changed as a result of this audit"
+    ]
+  },
+  {
+    "query": "What running it against real data caught",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/README.md::5::What running it against real data caught"
+    ]
+  },
+  {
+    "query": "What this is",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/CLAUDE.md::2::What this is"
+    ]
+  },
+  {
+    "query": "Where the improvement comes from (an ablation chain)",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::7",
+      "pm-bayes-pricer/notebooks/08_backtest_and_calibration.ipynb::8"
+    ]
+  },
+  {
+    "query": "Why dollar bars, not time bars? (Production relevance)",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::6::Why dollar bars, not time bars? (Production relevance)"
+    ]
+  },
+  {
+    "query": "Why people bet *less* than Kelly",
+    "relevant_chunk_ids": [
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::14",
+      "pm-bayes-pricer/notebooks/03_grading_forecasts_and_sizing_bets.ipynb::15"
+    ]
+  },
+  {
+    "query": "Why the folder structure looks like this",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/README.md::13::Why the folder structure looks like this"
+    ]
+  },
+  {
+    "query": "Z-score signal",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::8",
+      "crypto-cointegration-signal/notebooks/04_backtest.ipynb::9"
+    ]
+  },
+  {
+    "query": "p-value distributions per pair",
+    "relevant_chunk_ids": [
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::12",
+      "crypto-cointegration-signal/notebooks/03_cointegration_scan.ipynb::13"
+    ]
+  }
+]
