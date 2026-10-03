@@ -2,8 +2,10 @@ name: llm-news-signal
 
 on:
   push:
+    branches: ["main"]
     paths: ["llm-news-signal/**", ".github/workflows/llm-news-signal.yml"]
   pull_request:
+    branches: ["main"]
     paths: ["llm-news-signal/**", ".github/workflows/llm-news-signal.yml"]
 
 defaults:
