@@ -2,8 +2,10 @@ name: pm-bayes-pricer
 
 on:
   push:
+    branches: ["main"]
     paths: ["pm-bayes-pricer/**", ".github/workflows/pm-bayes-pricer.yml"]
   pull_request:
+    branches: ["main"]
     paths: ["pm-bayes-pricer/**", ".github/workflows/pm-bayes-pricer.yml"]
 
 defaults:

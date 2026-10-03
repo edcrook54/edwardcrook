@@ -19,14 +19,17 @@ Run `make eval-live` with your own key for the real result.
 
 ```python
 from deskagent.tools.run_stat_test import run_stat_test
+
 run_stat_test("adf", [0.01, -0.02, 0.015, ...])  # real statsmodels ADF test
 
 from deskagent.tools.rerun_backtest_variant import rerun_backtest_variant
+
 rerun_backtest_variant("SOL", overrides={"anchor_step_hours": 48})
 # -> real subprocess call into pm-bayes-pricer's actual backtest CLI,
 #    real cached bars, real numbers back. not a stub.
 
 from deskagent.tools.get_file import get_file
+
 get_file("pm-bayes-pricer/README.md")  # restricted, real file read
 ```
 

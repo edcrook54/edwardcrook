@@ -2,8 +2,10 @@ name: trading-research-rag
 
 on:
   push:
+    branches: ["main"]
     paths: ["trading-research-rag/**", ".github/workflows/trading-research-rag.yml"]
   pull_request:
+    branches: ["main"]
     paths: ["trading-research-rag/**", ".github/workflows/trading-research-rag.yml"]
 
 defaults:
