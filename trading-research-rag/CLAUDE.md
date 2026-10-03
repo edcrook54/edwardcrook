@@ -13,12 +13,12 @@ SWE-track portfolio piece. Few things working end-to-end > many things half-buil
   `find_chunk.py` (reads corpus directly, never touches bm25/dense/index). Labels from
   eyeballing search results = circular = worthless.
 - **CI gates on a real number**: `make eval-gate` vs committed baseline, not vibes.
-- `chunk_id` = `f"{repo}/{rel_path}::{idx}[::{heading}]"`. Repo prefix is load-bearing —
-  drop it and two projects' `README.md`s collide. Happened once already.
+- `chunk_id` = `f"{repo}/{rel_path}::{idx}[::{heading}]"`. The repo prefix is
+  load-bearing: drop it and two projects' `README.md`s collide. Happened once already.
 - BM25 uses ATIRE IDF (`ln(1 + (N-n+0.5)/(n+0.5))`), not Robertson-Walker (goes negative
   for common terms). Don't "simplify" back.
-- Dense leg is TF-IDF+SVD (LSA), not a neural embedder — on purpose, transparent + no
-  GPU needed at this corpus size. Not a TODO.
+- Dense leg is TF-IDF+SVD (LSA), a deliberate choice: transparent, no GPU needed at
+  this corpus size. It's a design decision, not a TODO.
 - `corpus_roots` point at `edwardcrook/...` (published repo), not outer working copies.
 
 ## architecture (implemented, don't redesign)
@@ -31,14 +31,14 @@ SWE-track portfolio piece. Few things working end-to-end > many things half-buil
 
 ## checking it works
 
-1. `make index` — chunk count + hash print sane
-2. `make eval` — bm25 > hybrid > dense ordering matches README table
-3. `make serve` + manual query — citations real and specific
+1. `make index`: chunk count and hash print sane
+2. `make eval`: bm25 > hybrid > dense ordering matches README table
+3. `make serve` + manual query: citations real and specific
 
 ## non-goals
 
 - no vector-DB framework at this corpus size, brute-force cosine is fine
-- don't tune until hybrid wins — the honest "it doesn't" result is more valuable
+- don't tune until hybrid wins; the honest "it doesn't" result is more valuable
 - no Docker/Grafana yet, `/metrics` is enough for now
 
 ## final gate
