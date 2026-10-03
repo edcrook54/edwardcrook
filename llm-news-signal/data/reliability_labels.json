@@ -1,0 +1,306 @@
+[
+  {
+    "meeting_date": "2022-01-26",
+    "hawkish_dovish_score": 0.5,
+    "surprise_magnitude": 0.3,
+    "sentiment": "hawkish",
+    "confidence": 0.85,
+    "rationale": "Hold, but first explicit 'soon appropriate to raise' pivot."
+  },
+  {
+    "meeting_date": "2022-03-16",
+    "hawkish_dovish_score": 0.6,
+    "surprise_magnitude": 0.3,
+    "sentiment": "hawkish",
+    "confidence": 0.85,
+    "rationale": "First hike (25bp); well-telegraphed by January's pivot."
+  },
+  {
+    "meeting_date": "2022-05-04",
+    "hawkish_dovish_score": 0.65,
+    "surprise_magnitude": 0.35,
+    "sentiment": "hawkish",
+    "confidence": 0.85,
+    "rationale": "Step-up to 50bp; 'highly attentive to inflation risks' added."
+  },
+  {
+    "meeting_date": "2022-06-15",
+    "hawkish_dovish_score": 0.75,
+    "surprise_magnitude": 0.55,
+    "sentiment": "hawkish",
+    "confidence": 0.9,
+    "rationale": "Historic 75bp hike, biggest step yet; 'strongly committed' added."
+  },
+  {
+    "meeting_date": "2022-07-27",
+    "hawkish_dovish_score": 0.7,
+    "surprise_magnitude": 0.2,
+    "sentiment": "hawkish",
+    "confidence": 0.85,
+    "rationale": "Second consecutive 75bp hike; continuation of established pace."
+  },
+  {
+    "meeting_date": "2022-09-21",
+    "hawkish_dovish_score": 0.7,
+    "surprise_magnitude": 0.15,
+    "sentiment": "hawkish",
+    "confidence": 0.85,
+    "rationale": "Third consecutive 75bp hike; fully expected continuation."
+  },
+  {
+    "meeting_date": "2022-11-02",
+    "hawkish_dovish_score": 0.55,
+    "surprise_magnitude": 0.3,
+    "sentiment": "hawkish",
+    "confidence": 0.75,
+    "rationale": "Fourth 75bp hike, but new 'cumulative tightening/lags' language hints at future deceleration."
+  },
+  {
+    "meeting_date": "2022-12-14",
+    "hawkish_dovish_score": 0.45,
+    "surprise_magnitude": 0.35,
+    "sentiment": "hawkish",
+    "confidence": 0.8,
+    "rationale": "Step down to 50bp from 75bp; meaningful deceleration."
+  },
+  {
+    "meeting_date": "2023-02-01",
+    "hawkish_dovish_score": 0.35,
+    "surprise_magnitude": 0.2,
+    "sentiment": "hawkish",
+    "confidence": 0.8,
+    "rationale": "Further deceleration to 25bp; 'inflation has eased somewhat' is first softening."
+  },
+  {
+    "meeting_date": "2023-03-22",
+    "hawkish_dovish_score": 0.25,
+    "surprise_magnitude": 0.3,
+    "sentiment": "hawkish",
+    "confidence": 0.7,
+    "rationale": "25bp hike but guidance softened to 'may be appropriate'; banking-stress caveat added."
+  },
+  {
+    "meeting_date": "2023-05-03",
+    "hawkish_dovish_score": 0.15,
+    "surprise_magnitude": 0.3,
+    "sentiment": "hawkish",
+    "confidence": 0.7,
+    "rationale": "25bp hike but 'may be appropriate' now fully conditional; read as signaling a pause."
+  },
+  {
+    "meeting_date": "2023-06-14",
+    "hawkish_dovish_score": 0.0,
+    "surprise_magnitude": 0.45,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "First hold after 10 consecutive hikes; genuine regime pivot."
+  },
+  {
+    "meeting_date": "2023-07-26",
+    "hawkish_dovish_score": 0.35,
+    "surprise_magnitude": 0.45,
+    "sentiment": "hawkish",
+    "confidence": 0.75,
+    "rationale": "Hike resumes after the pause ('hawkish skip'); reversal is itself surprising."
+  },
+  {
+    "meeting_date": "2023-09-20",
+    "hawkish_dovish_score": 0.05,
+    "surprise_magnitude": 0.2,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "Second hold; 'job gains have slowed' but inflation-risk language unchanged."
+  },
+  {
+    "meeting_date": "2023-11-01",
+    "hawkish_dovish_score": 0.0,
+    "surprise_magnitude": 0.15,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "Third hold; well-established pause, minimal new signal."
+  },
+  {
+    "meeting_date": "2023-12-13",
+    "hawkish_dovish_score": -0.1,
+    "surprise_magnitude": 0.2,
+    "sentiment": "neutral",
+    "confidence": 0.7,
+    "rationale": "First explicit 'inflation has eased over the past year' framing; dovish tilt (this was the 'dot plot pivot' meeting)."
+  },
+  {
+    "meeting_date": "2024-01-31",
+    "hawkish_dovish_score": -0.15,
+    "surprise_magnitude": 0.25,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "First explicit mention that cuts are being considered, even while saying not yet appropriate."
+  },
+  {
+    "meeting_date": "2024-03-20",
+    "hawkish_dovish_score": -0.15,
+    "surprise_magnitude": 0.1,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "Near-identical language to January; repeat, low surprise."
+  },
+  {
+    "meeting_date": "2024-05-01",
+    "hawkish_dovish_score": 0.1,
+    "surprise_magnitude": 0.3,
+    "sentiment": "neutral",
+    "confidence": 0.7,
+    "rationale": "'Lack of further progress' on inflation reverses the recent softening trend."
+  },
+  {
+    "meeting_date": "2024-06-12",
+    "hawkish_dovish_score": -0.05,
+    "surprise_magnitude": 0.2,
+    "sentiment": "neutral",
+    "confidence": 0.7,
+    "rationale": "'Modest further progress' - improvement from May's 'lack of progress'."
+  },
+  {
+    "meeting_date": "2024-07-31",
+    "hawkish_dovish_score": -0.25,
+    "surprise_magnitude": 0.3,
+    "sentiment": "dovish",
+    "confidence": 0.75,
+    "rationale": "New 'risks to both sides' framing drops the inflation-only focus; sets up the September cut."
+  },
+  {
+    "meeting_date": "2024-09-18",
+    "hawkish_dovish_score": -0.6,
+    "surprise_magnitude": 0.6,
+    "sentiment": "dovish",
+    "confidence": 0.85,
+    "rationale": "First cut of the cycle, and a 50bp cut (vs. the more typical 25bp) - high surprise on size."
+  },
+  {
+    "meeting_date": "2024-11-07",
+    "hawkish_dovish_score": -0.35,
+    "surprise_magnitude": 0.3,
+    "sentiment": "dovish",
+    "confidence": 0.8,
+    "rationale": "25bp cut; deceleration in pace from September's 50bp."
+  },
+  {
+    "meeting_date": "2024-12-18",
+    "hawkish_dovish_score": -0.15,
+    "surprise_magnitude": 0.35,
+    "sentiment": "neutral",
+    "confidence": 0.7,
+    "rationale": "25bp cut but 'extent and timing' language reads cautious; markets took this as hawkish-leaning guidance alongside the cut."
+  },
+  {
+    "meeting_date": "2025-01-29",
+    "hawkish_dovish_score": 0.0,
+    "surprise_magnitude": 0.35,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "First hold after three consecutive cuts; genuine pause signal."
+  },
+  {
+    "meeting_date": "2025-03-19",
+    "hawkish_dovish_score": 0.0,
+    "surprise_magnitude": 0.1,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "Second hold; 'uncertainty has increased' is the only new note."
+  },
+  {
+    "meeting_date": "2025-05-07",
+    "hawkish_dovish_score": -0.05,
+    "surprise_magnitude": 0.25,
+    "sentiment": "neutral",
+    "confidence": 0.7,
+    "rationale": "New explicit dual-risk framing: 'risks of higher unemployment AND higher inflation have risen'."
+  },
+  {
+    "meeting_date": "2025-06-18",
+    "hawkish_dovish_score": 0.0,
+    "surprise_magnitude": 0.15,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "'Uncertainty has diminished but remains elevated' - slight de-escalation."
+  },
+  {
+    "meeting_date": "2025-07-30",
+    "hawkish_dovish_score": -0.1,
+    "surprise_magnitude": 0.2,
+    "sentiment": "neutral",
+    "confidence": 0.7,
+    "rationale": "'Growth moderated in the first half' - a growth-outlook downgrade."
+  },
+  {
+    "meeting_date": "2025-09-17",
+    "hawkish_dovish_score": -0.4,
+    "surprise_magnitude": 0.4,
+    "sentiment": "dovish",
+    "confidence": 0.8,
+    "rationale": "First cut after six holds; 'downside risks to employment have risen' justification."
+  },
+  {
+    "meeting_date": "2025-10-29",
+    "hawkish_dovish_score": -0.45,
+    "surprise_magnitude": 0.3,
+    "sentiment": "dovish",
+    "confidence": 0.8,
+    "rationale": "Second consecutive cut, plus announced end of balance-sheet runoff (QT) - an added dovish/liquidity signal."
+  },
+  {
+    "meeting_date": "2025-12-10",
+    "hawkish_dovish_score": -0.5,
+    "surprise_magnitude": 0.35,
+    "sentiment": "dovish",
+    "confidence": 0.8,
+    "rationale": "Third consecutive cut, plus a new reserve-management Treasury-purchase program - further dovish/liquidity easing."
+  },
+  {
+    "meeting_date": "2026-01-28",
+    "hawkish_dovish_score": 0.0,
+    "surprise_magnitude": 0.3,
+    "sentiment": "neutral",
+    "confidence": 0.75,
+    "rationale": "First hold after three cuts; pause signal."
+  },
+  {
+    "meeting_date": "2026-03-18",
+    "hawkish_dovish_score": 0.0,
+    "surprise_magnitude": 0.15,
+    "sentiment": "neutral",
+    "confidence": 0.7,
+    "rationale": "New Middle East geopolitical-risk mention added; otherwise unchanged."
+  },
+  {
+    "meeting_date": "2026-04-29",
+    "hawkish_dovish_score": 0.15,
+    "surprise_magnitude": 0.2,
+    "sentiment": "neutral",
+    "confidence": 0.7,
+    "rationale": "Inflation concern escalates, explicitly tied to global energy prices from the geopolitical shock."
+  },
+  {
+    "meeting_date": "2026-06-17",
+    "hawkish_dovish_score": 0.2,
+    "surprise_magnitude": 0.3,
+    "sentiment": "neutral",
+    "confidence": 0.6,
+    "rationale": "Notably terser statement format/style shift; 'will deliver price stability' reads as a harder commitment despite holding."
+  },
+  {
+    "meeting_date": "2026-07-29",
+    "hawkish_dovish_score": 0.15,
+    "surprise_magnitude": 0.15,
+    "sentiment": "neutral",
+    "confidence": 0.65,
+    "rationale": "Same terse format repeated; less surprising now that it's established."
+  },
+  {
+    "meeting_date": "2026-09-16",
+    "hawkish_dovish_score": 0.55,
+    "surprise_magnitude": 0.6,
+    "sentiment": "hawkish",
+    "confidence": 0.8,
+    "rationale": "Hike resumes after a cutting-then-holding regime; a major, surprising reversal."
+  }
+]

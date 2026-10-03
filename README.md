@@ -51,6 +51,28 @@ where the live service wouldn't pick up a rebuilt index without a restart, and a
 mis-chunking bug where a code-fence comment was misread as a markdown header and
 actually corrupted citations in the real corpus.
 
+### [llm-news-signal](./llm-news-signal)
+
+Does an LLM-extracted hawkish/dovish score from real FOMC statement text carry
+predictive power for BTC/ETH forward returns — tested with the same
+walk-forward, cost-adjusted, multiple-comparison-aware rigor as
+`crypto-cointegration-signal`? The LLM is used once as a feature extractor, not
+an agent: its reliability as a labeler (Cohen's kappa against 38 independent
+hand labels) is validated and enforced as a gate before any downstream claim is
+trusted.
+
+**Headline result: pending** — this needs a live Anthropic API call this
+environment didn't have a key for. Rather than fake a result, the full
+pipeline (38 real FOMC statements compiled verbatim from federalreserve.gov,
+EST/EDT-correct event timing, Newey-West rank-IC, Benjamini-Hochberg correction
+across all 6 asset×horizon tests, cost-adjusted backtest) is built, tested, and
+audited against a placeholder signal instead, and says so plainly. The audit
+(see [`AUDIT.md`](./llm-news-signal/AUDIT.md)) caught a real look-ahead bug
+(a bar-labeling edge case that leaked up to 59 seconds of post-announcement
+trading into the "before" price for every single event) and a real
+cost-accounting bug (a vendored cost model wrongly assumed consecutive bets
+were one continuously-held position) before this version existed.
+
 ## Skills this repo is meant to show
 
 - **Time-series / quant methods**: dollar bars (volume-clock sampling
@@ -75,6 +97,13 @@ actually corrupted citations in the real corpus.
   on retrieval quality, and the same four-checker audit pattern retargeted at
   this project's own failure modes (retrieval validity, production
   robustness, citation provenance).
+- **LLM-as-labeler validation**: treating an LLM's extracted score as a noisy
+  labeler whose reliability (Cohen's kappa, Pearson correlation against
+  independent human labels) must clear a stated threshold before being
+  trusted in any downstream statistic, enforced as a code-level gate rather
+  than a separate step that could be skipped — and refusing to fabricate a
+  headline result when the real data dependency (a live API key) wasn't
+  available, rather than quietly faking one.
 
 ## Tools I use
 
