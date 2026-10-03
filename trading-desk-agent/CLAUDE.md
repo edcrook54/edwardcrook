@@ -2,21 +2,21 @@
 
 ## what this is
 
-Core AI/Agents track piece — sits with `trading-research-rag` (SWE) and
+Core AI/Agents track piece, sits with `trading-research-rag` (SWE) and
 `llm-news-signal` (DS). A tool-using agent over the sibling quant projects,
 plus a multi-agent audit-dispatch mode that productionizes `project-audit`
 as live running code instead of static Claude Code instructions.
 
 ## rules, don't relitigate
 
-- **No fabricated agent results.** No key at build time -> README live-eval
-  is PENDING. Everything else runs against real tools + real data with a
-  *scripted* client — never present that as a real model decision.
+- **No fabricated agent results.** No key at build time means README live-eval
+  stays PENDING. Everything else runs against real tools and real data with a
+  *scripted* client. Never present that as a real model decision.
 - **Tool-use safety is structural, not advisory.** Allowlists/path checks
   enforced in code, not docstrings. Every tool call wrapped so an exception
   becomes a visible `tool_result` error, never a crash or silent empty result.
 - **Audit-dispatch synthesis's limits are disclosed.** Convergence detection
-  is keyword-overlap (Jaccard), not semantic understanding — say so.
+  is keyword-overlap (Jaccard), not semantic understanding. Say so.
 - **Citations must be checkable.** `citation_precision` exists to catch a
   claim about a file/path never actually retrieved via a tool that run.
 
@@ -26,9 +26,9 @@ as live running code instead of static Claude Code instructions.
   *that project's* venv, needs its bars data locally (see
   `llm-news-signal/CLAUDE.md` for why that's gitignored, not committed).
 - `search_corpus` needs `trading-research-rag`'s `/search` running
-  (`make serve` there) — no reimplemented retrieval.
+  (`make serve` there). No reimplemented retrieval.
 - installed anthropic SDK has no `temperature` param (same fact as
-  `llm-news-signal`). Doesn't matter here — an agent reasoning differently
+  `llm-news-signal`). Doesn't matter here: an agent reasoning differently
   per context is fine, this isn't a labeling pipeline.
 - `agent/audit_dispatch.py`'s dispatch/synthesize functions are real and
   reusable, not a demo. If this project's own AUDIT.md ever gets
@@ -41,8 +41,8 @@ as live running code instead of static Claude Code instructions.
 2. 4 sandboxed tools (`tools/`), independently testable
 3. `rerun_backtest_variant` allowlist excludes anything redefining the
    train/test boundary
-4. async multi-checker dispatch via `asyncio.gather`, never sequential —
-   the whole point is independence
+4. async multi-checker dispatch via `asyncio.gather`, never sequential.
+   The whole point is independence.
 5. eval metrics limited to what's mechanically checkable without an LLM
    judge (citation precision, tool-usage recall, keyword recall)
 
@@ -54,10 +54,10 @@ as live running code instead of static Claude Code instructions.
 
 ## non-goals
 
-- no arbitrary code execution — tools are fixed, narrow dispatch, never eval/exec
+- no arbitrary code execution, tools are fixed, narrow dispatch, never eval/exec
 - no Docker/live-service packaging before the agent-quality question is answered
-- no LLM-as-judge without validating it against human labels first — an
-  unvalidated judge grading an agent is a known failure mode
+- no LLM-as-judge without validating it against human labels first. An
+  unvalidated judge grading an agent is a known failure mode.
 
 ## final gate
 

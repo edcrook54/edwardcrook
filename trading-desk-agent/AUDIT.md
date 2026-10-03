@@ -6,12 +6,12 @@ agent run or live audit-dispatch run has happened, and the README's live-eval
 section is correctly marked PENDING. The four checkers
 (`tool-use-safety-checker`, `hallucination-citation-checker`,
 `agent-eval-validity-checker`, `narrative-checker`) were dispatched in parallel
-against the pipeline's *mechanism* — tool sandboxing, the citation-precision
+against the pipeline's *mechanism*: tool sandboxing, the citation-precision
 metric's correctness, the gold eval set's validity, and the PENDING framing's
-honesty — not against real agent-quality numbers, which don't exist yet. A
+honesty, not against real agent-quality numbers, which don't exist yet. A
 second, full audit (re-running all four against real transcripts and real
 `data/eval_results.json`) is still required once `make eval-live` has actually
-run — see CLAUDE.md's "Final review gate." All findings below were fixed before
+run; see CLAUDE.md's "Final review gate." All findings below were fixed before
 this report was written; none were deferred without a stated reason.
 
 ## Critical
@@ -22,7 +22,7 @@ this report was written; none were deferred without a stated reason.
    `_PATH_LIKE_RE`'s character class included `.`, so an answer like "...see
    `pm-bayes-pricer/README.md`." (a real, correctly-cited source) extracted the
    token `pm-bayes-pricer/README.md.` (with the trailing period), which then
-   failed to match the evidence and was wrongly flagged unsupported — the exact
+   failed to match the evidence and was wrongly flagged unsupported: the exact
    opposite of the metric's purpose. Verified live: reproduced the false flag,
    confirmed the fix. **Fixed**: `_extract_clean_paths` now strips trailing
    `.,:;)'"` from every extracted token, on both the answer side and the
@@ -32,20 +32,20 @@ this report was written; none were deferred without a stated reason.
 2. **8 of 16 gold eval questions expected `search_corpus` to find content that
    was never indexed.** (`agent-eval-validity-checker`) `trading-research-rag`'s
    corpus is fixed to only `crypto-cointegration-signal` and `pm-bayes-pricer`
-   (confirmed in that project's own `config.py`/README) — it does not index
+   (confirmed in that project's own `config.py`/README): it does not index
    itself or `llm-news-signal`. Eight questions asked about `trading-research-rag`'s
    own audit/eval content or `llm-news-signal`'s content with `expected_tools:
-   ["search_corpus"]`, which structurally cannot retrieve either. A correctly-
+   ["search_corpus"]`, which structurally cannot retrieve either. A correctly
    behaving agent would score near-zero on these through no fault of its own
-   reasoning, or be pushed toward guessing (exactly the hallucination risk
-   `citation_precision` exists to catch) rather than a genuine tool-selection
-   failure. **Fixed**: all 8 questions' `expected_tools` changed to `["get_file"]`
-   (which *can* reach these projects' files — `allowed_file_roots` already
-   included them), their `gold_citation_substring` changed to a real, verified
-   file path, and their wording adjusted to ask "according to `<project>`'s
-   README/CLAUDE.md" to make the intended tool unambiguous. Every corrected
-   citation path was independently re-verified to actually resolve via
-   `get_file` after the fix.
+   reasoning, or get pushed toward guessing (exactly the hallucination risk
+   `citation_precision` exists to catch), not because of a genuine
+   tool-selection failure. **Fixed**: all 8 questions' `expected_tools` changed
+   to `["get_file"]` (which *can* reach these projects' files; `allowed_file_roots`
+   already included them), their `gold_citation_substring` changed to a real,
+   verified file path, and their wording adjusted to ask "according to
+   `<project>`'s README/CLAUDE.md" to make the intended tool unambiguous. Every
+   corrected citation path was independently re-verified to actually resolve
+   via `get_file` after the fix.
 
 ## Important
 
@@ -54,12 +54,12 @@ this report was written; none were deferred without a stated reason.
    with no mitigation, were both real but previously undisclosed.**
    (`tool-use-safety-checker`) Verified live: path-traversal, symlink-escape,
    override-allowlist-bypass, and shell-injection-via-allowed-key attempts were
-   all correctly blocked by existing code (not just docstrings) — no exploit
+   all correctly blocked by existing code (not just docstrings), no exploit
    found. But two real limitations had no README mention: (a) tool results flow
    into the next model message with no framing marking them as untrusted
    content, and (b) a subprocess timeout bounds wall-clock time but not
    necessarily a full process tree. **Fixed**: both disclosed explicitly in
-   README "Scope and limits," not silently left unmentioned.
+   README "Scope and limits" instead of being left unmentioned.
 
 4. **Several `gold_keywords` were too generic to discriminate a correct answer
    from an incorrect or generic one.** (`agent-eval-validity-checker`) Specific
@@ -80,10 +80,10 @@ this report was written; none were deferred without a stated reason.
 6. **`citation_precision`'s vacuous pass ("cited nothing") was indistinguishable
    from "cited things, all verified" in any aggregate reporting.**
    (`hallucination-citation-checker`) A future agent that learned to avoid
-   citing anything at all would have silently inflated the mean precision
-   score. **Fixed**: `citation_precision` now returns an explicit `cited_nothing`
-   flag; `run_eval.py` reports a separate `zero_citation_rate` alongside the
-   mean, so the two conditions can never collapse into one number.
+   citing anything at all would have inflated the mean precision score without
+   anyone noticing. **Fixed**: `citation_precision` now returns an explicit
+   `cited_nothing` flag; `run_eval.py` reports a separate `zero_citation_rate`
+   alongside the mean, so the two conditions can never collapse into one number.
 
 7. **Citation matching used an unanchored raw substring check, so a truncated
    or mangled citation that happened to be a textual substring of a real one
@@ -92,7 +92,7 @@ this report was written; none were deferred without a stated reason.
    `foo/bar/baz.md`) scored fully supported before the fix. **Fixed**: matching
    is now against the *set* of whole path-like tokens extracted from the
    evidence (via the same extraction function used on the answer), not a raw
-   substring check — a truncated citation no longer exact-matches a longer real
+   substring check. A truncated citation no longer exact-matches a longer real
    one. Regression-tested in
    `test_citation_precision_does_not_accept_a_truncated_citation_as_supported`.
 
@@ -107,26 +107,26 @@ this report was written; none were deferred without a stated reason.
    name.
 
 9. **The audit-dispatch synthesis's keyword-overlap limitation was disclosed
-   only in "Design decisions," not in "Scope and limits"** where a skimming
+   only in "Design decisions," not in "Scope and limits"**, where a skimming
    reader would actually look for caveats. (`narrative-checker`) **Fixed**:
    pulled a concise version of the disclosure up into "Scope and limits."
 
 ## Minor
 
 10. **`citation_precision` can't catch a correctly-cited source paired with a
-    misquoted fact** — it only checks that a cited *path* was actually
+    misquoted fact.** It only checks that a cited *path* was actually
     retrieved, not that claims about its contents are accurate.
     (`hallucination-citation-checker`) **Disclosed, not fixed**: this is a
-    structural limitation of a mechanical (non-semantic) metric, not a bug;
+    structural limitation of a mechanical (non-semantic) metric, not a bug,
     noted explicitly in the skill checklist and left as a known gap pending a
     real LLM-as-judge.
 11. Minor keyword/phrasing looseness in the refusal question's keyword list
-    (contraction-sensitive, e.g. "I can't" vs. "cannot") —
-    (`agent-eval-validity-checker`) **mitigated**: added `"can't"` as an
-    additional accepted keyword variant; full phrasing-robustness would need
+    (contraction-sensitive, e.g. "I can't" vs. "cannot").
+    (`agent-eval-validity-checker`) **Mitigated**: added `"can't"` as an
+    additional accepted keyword variant; full phrasing robustness would need
     the same LLM-as-judge this project already defers.
-12. A subprocess timeout doesn't guarantee full process-tree/resource cleanup
-    — (`tool-use-safety-checker`) **disclosed** in README, not currently
+12. A subprocess timeout doesn't guarantee full process-tree/resource cleanup.
+    (`tool-use-safety-checker`) **Disclosed** in README, not currently
     exploitable (the wrapped CLI doesn't fork further).
 
 ## Verified sound
@@ -140,15 +140,15 @@ this report was written; none were deferred without a stated reason.
   absolute paths, URL-encoded traversal, prefix-confusion root names, and a
   real symlink-escape attempt (a symlink *inside* an allowed root pointing
   outside it) were all tested live and correctly blocked by the
-  `.resolve()` + `is_relative_to` check — not merely a string-prefix check a
+  `.resolve()` + `is_relative_to` check, not merely a string-prefix check a
   crafted path could defeat.
 - The agent loop's `max_iterations` cap is real and enforced, with a
   distinguishable `hit_max_iterations`/`stop_reason="max_iterations"` result
   that cannot be confused with a genuine final answer.
-- No tool error is ever silently swallowed: every caught exception becomes a
+- No tool error is ever swallowed: every caught exception becomes a
   visible `is_error: true` tool result the loop continues past.
 - The `ANTHROPIC_API_KEY` never appears in any written transcript or error
-  message — confirmed by tracing every place `anthropic_api_key` is referenced
+  message, confirmed by tracing every place `anthropic_api_key` is referenced
   in the codebase.
 - The async multi-checker dispatch's concurrency is real, not just claimed:
   three 0.05s-delay scripted calls complete in ~0.05s total via
@@ -159,5 +159,5 @@ this report was written; none were deferred without a stated reason.
   `crypto-cointegration-signal`/`pm-bayes-pricer` and confirmed genuinely
   answerable from what's actually indexed.
 - The refusal question (live Bitcoin price) was confirmed to have no answering
-  path through any of the four tools — a refusal is genuinely the correct
+  path through any of the four tools. A refusal is genuinely the correct
   behavior being tested for, not an artifact of weak tooling.
